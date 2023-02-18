@@ -9,7 +9,7 @@ import static com.quordlebot.QuordleBot.wordArray;
 public class RandomQuordleGenerator {
     static int UPPERBOUND = wordArray.length; // =2309
 
-    public static String selectGuessIndex() {
+    public static String selectRandomGuess() {
         SecureRandom rand = new SecureRandom();
         return wordArray[rand.nextInt(UPPERBOUND)];
     }

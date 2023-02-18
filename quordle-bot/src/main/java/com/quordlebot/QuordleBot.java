@@ -1,22 +1,17 @@
 package com.quordlebot;
 
 import java.util.Arrays;
-import java.util.Map;
-import java.util.Set;
 
 public class QuordleBot {
     static WordListReader wordListReader = new WordListReader();
     static String[] wordArray = wordListReader.wordListExtractor();
-    static Map<String, Set<String>> wordsAndLettersMap = GuessOptimizer.allWordsLetterCountMap(wordArray);
-    static Map<String, Set<String>> wordsAndLetterPlacementMap = GuessOptimizer.allWordsLetterPlacementMap(wordArray);
     static final char[] CORRECT_PATTERN = new char[] {'$', '$', '$', '$', '$'};
     static final int DEFAULT = 15;
 
     public static void main(String[] args) {
-        GameLog guesses = quordleBot(RandomQuordleGenerator.selectGuessIndex(), RandomQuordleGenerator.selectRandomAnswers());
+        GameLog guesses = quordleBot(RandomQuordleGenerator.selectRandomGuess(), RandomQuordleGenerator.selectRandomAnswers());
         System.out.println(guesses.getGuessLog() + " " + guesses.getGuessesByWord());
     }
-
 
     public static GameLog quordleBot(String givenGuess, String[] givenAnswers){
         String guess = givenGuess;
@@ -35,14 +30,18 @@ public class QuordleBot {
                     guessesNeeded[i] = guessNum;
                     unknownAnswers -= 1;
                     wordPossibilities[i] = new String[0];
-                } if (guessesNeeded[i] == DEFAULT) {
+                }
+                if (guessesNeeded[i] == DEFAULT) {
                     wordPossibilities[i] = GuessOptimizer.possibleAnswerFinder(guess, wordPossibilities[i],
                             quordleDiagrams[i]).toArray(new String[0]);
                 }
-            } if (unknownAnswers == 0) {
+            }
+            if (unknownAnswers == 0) {
                 break;
-            } guess = GuessOptimizer.nextGuessFinder(wordPossibilities, wordsAndLettersMap, wordsAndLetterPlacementMap);
+            }
+            guess = GuessOptimizer.nextGuessFinder(wordPossibilities, unknownAnswers);
         }
         return new GameLog(givenGuess, answers, guessLog, guessesNeeded);
     }
 }
+
