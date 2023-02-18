@@ -1,0 +1,89 @@
+QuordleBot guessed the following on java version 1.0:
+snort (given)
+gaily
+vouch
+thick
+Word 1 (thick) guessed in 4 tries.
+ninth
+Word 2 (ninth) guessed in 5 tries.
+avian
+Word 3 (avian) guessed in 6 tries.
+excel
+Word 4 (excel) guessed in 7 tries.
+For a total of 22
+
+However, after guessing "gaily" the list of words was as follows:
+["twice", "thief", "quite", "thick", "white"] //length = 5
+["tunic", "ninth"]//length = 2
+["china", "avian"]//length = 2
+["cluck", "flume", "bleed", "belch", "pluck", +23 more] //length = 28
+
+Switching that word to "china" gave:
+snort
+gaily
+china (Manually chosen)
+thick
+Word 1 (thick) guessed in 4 tries.
+ninth
+Word 2 (ninth) guessed in 5 tries.
+avian
+Word 3 (avian) guessed in 6 tries.
+excel
+Word 4 (excel) guessed in 7 tries.
+For a total of 22.
+
+Switching that word to "tunic" gave:
+snort
+gaily
+tunic
+ninth
+Word 2 (ninth) guessed in 4 tries.
+thick
+Word 1 (thick) guessed in 5 tries.
+avian
+Word 3 (avian) guessed in 6 tries.
+excel
+Word 4 (excel) guessed in 7 tries.
+For a total of 22.
+
+snort
+gaily
+ninth
+Word 2 (ninth) guessed in 3 tries.
+avian
+Word 3 (avian) guessed in 4 tries.
+fleck
+thick
+Word 1 (thick) guessed in 6 tries.
+excel
+Word 4 (excel) guessed in 7 tries.
+For a total of 20.
+
+snort
+gaily
+avian
+Word 3 (avian) guessed in 3 tries.
+chute
+thick
+Word 1 (thick) guessed in 5 tries.
+ninth
+Word 2 (ninth) guessed in 6 tries.
+excel
+Word 4 (excel) guessed in 7 tries.
+For a total of 21.
+
+Can't say definitively, because results could differ on subsequent guesses with different words, but seems like guessing a possible word in this scenario likely gives a better expected outcome than not.
+
+For third guess:
+vouch is rated as 3.4771428571428578,
+china -> 2.3571428571428577,
+ninth -> 1.6721428571428574,
+avian -> 1.0071428571428571,
+tunic -> 1.797857142857143
+
+if possible words are multiplied by (1 + 1/possibleword.length),
+china would be ~3.5357, so better than vouch, which seems warrented here.
+
+Note: the difference between Quordle wordlist and Wordle wordlist is Quordle list contains 6 additional words, most of
+which are somewhat offensive.  Also, Quordle list has KAPUT while wordle has CAPUT.
+
