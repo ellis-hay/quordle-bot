@@ -81,7 +81,7 @@ public class GuessOptimizer {
                     Integer diagram = WORD_TO_WORD_DIAGRAM_MAP.get(possibleGuess).get(possibleAnswer);
                     possibleDiagrams.add(diagram); //Can be a set as currently construed
                     if (diagram.equals(33333)) {
-                        wordDivisor -= 1;
+                        wordDivisor -= answersToBeGuessed;
                     }
                 }
                 if (possibleDiagrams.size() > 0) {
