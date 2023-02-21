@@ -12,6 +12,8 @@ public class GameLog implements Serializable {
     private String[] guessLog;
     private int[] guessesByWord;
 
+    public GameLog(){};
+
     public GameLog(String startingWord, String[] answers, String[] guessLog, int[] guessesByWord) {
         this.startingWord = startingWord;
         this.answers = answers;
@@ -64,4 +66,19 @@ public class GameLog implements Serializable {
         return totalGuesses;
     }
 
+    public void setStartingWord(String startingWord) {
+        this.startingWord = startingWord;
+    }
+
+    public void setAnswers(String[] answers) {
+        this.answers = answers;
+    }
+
+    public void setGuessLog(String[] guessLog) {
+        this.guessLog = guessLog;
+    }
+
+    public void setGuessesByWord(int[] guessesByWord) {
+        this.guessesByWord = guessesByWord;
+    }
 }

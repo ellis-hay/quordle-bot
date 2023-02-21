@@ -4,7 +4,7 @@ import java.util.*;
 
 import static com.quordlebot.QuordleBot.wordArray;
 
-public class GuessOptimizer {
+public final class GuessOptimizer {
 
     private static final Map<String, Map<String, Integer>> WORD_TO_WORD_DIAGRAM_MAP = wordToWordDiagrams();
 
@@ -71,6 +71,7 @@ public class GuessOptimizer {
     }
 
     private static Map<String, Double> wordByExpectedOutcome(String[][] wordPossibilityArrays, int answersToBeGuessed) {
+        long start = System.currentTimeMillis();
         Map<String, Double> propensityToShrinkPossibilitiesMap = new HashMap<>();
         for (String possibleGuess : wordArray) {
             double averagePossibilitiesAfterGuess = 0;
@@ -79,7 +80,7 @@ public class GuessOptimizer {
                 int wordDivisor = wordPossibilityArrays[i].length;
                 for (String possibleAnswer : wordPossibilityArrays[i]) {
                     Integer diagram = WORD_TO_WORD_DIAGRAM_MAP.get(possibleGuess).get(possibleAnswer);
-                    possibleDiagrams.add(diagram); //Can be a set as currently construed
+                    possibleDiagrams.add(diagram);
                     if (diagram.equals(33333)) {
                         wordDivisor -= answersToBeGuessed;
                     }

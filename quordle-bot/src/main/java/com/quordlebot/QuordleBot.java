@@ -1,6 +1,8 @@
 package com.quordlebot;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class QuordleBot {
     static WordListReader wordListReader = new WordListReader();
@@ -9,8 +11,41 @@ public class QuordleBot {
     static final int DEFAULT = 15;
 
     public static void main(String[] args) {
-        GameLog guesses = quordleBot(RandomQuordleGenerator.selectRandomGuess(), RandomQuordleGenerator.selectRandomAnswers());
-        System.out.println(guesses.getGuessLog() + " " + guesses.getGuessesByWord());
+        long start = System.currentTimeMillis();
+        GameLog[] results = new GameLog[wordArray.length * wordArray.length/4];
+        for(int i = 0; i < wordArray.length; i++) {
+            for(int j = 0; j < 1; j += 4) {
+                results[i] = quordleBot(wordArray[i], new String[]{wordArray[j], wordArray[j+1], wordArray[j+2], wordArray[j+3]});
+            }
+            System.out.println(wordArray[i]+ " (" + i +") done");
+        }
+
+        //long start = System.currentTimeMillis();
+        //GameLog[] results = new GameLog[wordArray.length];
+        int cumulativeScores = 0;
+        List<Integer> bombedOut = new ArrayList<>();
+        for(int i = 0; i < wordArray.length; i++) {
+            results[i] = quordleBot(wordArray[i], new String[]{wordArray[(4*i)%2309], wordArray[(4*i+1)%2309],
+                    wordArray[(4*i+2)%2309], wordArray[(4*i+3)%2309]});
+            System.out.println(wordArray[i]+ " (" + i +") done");
+            cumulativeScores += results[i].getTotalGuesses();
+            if (results[i].didBombOut()) {
+                bombedOut.add(i);
+            }
+        }
+        System.out.println((double) cumulativeScores/wordArray.length);
+        for (Integer integer : bombedOut) {
+            System.out.println(integer + "was bombed out");
+        }
+        long end = System.currentTimeMillis();
+        long totalTime = end - start;
+        System.out.println("that took" + totalTime + "ms");
+
+//        GameLog guesses= quordleBot("snort", new String[] {"prose", "leach", "flute", "folio"});
+//        System.out.println(guesses.getGuessLog() +" "+ guesses.getGuessesByWord());
+
+//        GameLog guesses = quordleBot(RandomQuordleGenerator.selectRandomGuess(), RandomQuordleGenerator.selectRandomAnswers());
+//        System.out.println(guesses.getGuessLog() + " " + guesses.getGuessesByWord());
     }
 
     public static GameLog quordleBot(String givenGuess, String[] givenAnswers){
