@@ -11,6 +11,7 @@ public class GameLog implements Serializable {
     private String[] answers;
     private String[] guessLog;
     private int[] guessesByWord;
+    private PossibleWordsLeft[] possibilitiesByRound;
 
     public GameLog(){};
 
