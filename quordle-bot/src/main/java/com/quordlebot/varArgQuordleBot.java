@@ -34,6 +34,7 @@ public class varArgQuordleBot {
         for (int i = 0; i < presetGuessesAfterFirst.length; i++){
             guessLog[i+1] = presetGuessesAfterFirst[i];
         }
+        PossibleWordsLeft[] possibleWordsByRound = new PossibleWordsLeft[9];
         for (int guessNum = 1; guessNum <= 9; guessNum++) {
             //System.out.println(guess);
             guessLog[guessNum - 1] = guess;
@@ -53,12 +54,13 @@ public class varArgQuordleBot {
             if (unknownAnswers == 0) {
                 break;
             }
+            possibleWordsByRound[guessNum - 1] = new PossibleWordsLeft(wordPossibilities);
             if (guessLog[guessNum] == null) {  //guessNum is offset by 1 from list index count
                 guess = GuessOptimizer.nextGuessFinder(wordPossibilities, unknownAnswers);
             } else {
                 guess = guessLog[guessNum];
             }
         }
-        return new GameLog(guessLog[0], answers, guessLog, guessesNeeded);
+        return new GameLog(guessLog[0], answers, guessLog, guessesNeeded, possibleWordsByRound);
     }
 }

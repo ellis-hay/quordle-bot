@@ -56,6 +56,7 @@ public class QuordleBot {
         int unknownAnswers = 4;
         int[] guessesNeeded = new int[] {DEFAULT, DEFAULT, DEFAULT, DEFAULT};
         String[] guessLog = new String[9];
+        PossibleWordsLeft[] possibleWordsByRound = new PossibleWordsLeft[9];
         for (int guessNum = 1; guessNum <= 9; guessNum++) {
             //System.out.println(guess);
             guessLog[guessNum - 1] = guess;
@@ -75,9 +76,10 @@ public class QuordleBot {
             if (unknownAnswers == 0) {
                 break;
             }
+            possibleWordsByRound[guessNum - 1] = new PossibleWordsLeft(wordPossibilities);
             guess = GuessOptimizer.nextGuessFinder(wordPossibilities, unknownAnswers);
         }
-        return new GameLog(givenGuess, answers, guessLog, guessesNeeded);
+        return new GameLog(givenGuess, answers, guessLog, guessesNeeded, possibleWordsByRound);
     }
 }
 

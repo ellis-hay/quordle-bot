@@ -15,11 +15,13 @@ public class GameLog implements Serializable {
 
     public GameLog(){};
 
-    public GameLog(String startingWord, String[] answers, String[] guessLog, int[] guessesByWord) {
+    public GameLog(String startingWord, String[] answers, String[] guessLog, int[] guessesByWord,
+                   PossibleWordsLeft[] possibilitiesByRound) {
         this.startingWord = startingWord;
         this.answers = answers;
         this.guessLog = guessLog;
         this.guessesByWord = guessesByWord;
+        this.possibilitiesByRound = possibilitiesByRound;
     }
 
     public String getStartingWord() {
@@ -66,6 +68,10 @@ public class GameLog implements Serializable {
         }
         return totalGuesses;
     }
+
+    public String getPossibleWordsStringByRound(int roundNumber) {
+        return possibilitiesByRound[roundNumber].toString();
+    };
 
     public void setStartingWord(String startingWord) {
         this.startingWord = startingWord;
