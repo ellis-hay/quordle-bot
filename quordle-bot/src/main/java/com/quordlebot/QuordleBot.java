@@ -1,8 +1,6 @@
 package com.quordlebot;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class QuordleBot {
     static WordListReader wordListReader = new WordListReader();
@@ -11,7 +9,10 @@ public class QuordleBot {
     static final int DEFAULT = 15;
 
     public static void main(String[] args) {
-        long start = System.currentTimeMillis();
+        GameLog guesses= quordleBot("trace", new String[] {"tread", "leper", "eject", "plait"});
+        System.out.println(guesses.getGuessLog() +" "+ guesses.getGuessesByWord());
+
+        /*long start = System.currentTimeMillis();
         GameLog[] results = new GameLog[wordArray.length * wordArray.length/4];
         for(int i = 0; i < wordArray.length; i++) {
             for(int j = 0; j < 1; j += 4) {
@@ -39,7 +40,7 @@ public class QuordleBot {
         }
         long end = System.currentTimeMillis();
         long totalTime = end - start;
-        System.out.println("that took" + totalTime + "ms");
+        System.out.println("that took" + totalTime + "ms");*/
 
 //        GameLog guesses= quordleBot("snort", new String[] {"prose", "leach", "flute", "folio"});
 //        System.out.println(guesses.getGuessLog() +" "+ guesses.getGuessesByWord());

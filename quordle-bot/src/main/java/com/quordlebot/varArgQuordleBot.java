@@ -1,7 +1,5 @@
 package com.quordlebot;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.util.Arrays;
 
 import static com.quordlebot.QuordleBot.wordArray;
@@ -12,7 +10,7 @@ public class varArgQuordleBot {
 
     public static void main(String[] args) {
         RandomQuordleGenerator quordleGenerator= new RandomQuordleGenerator();
-        GameLog guesses = quordleBot("rowdy", quordleGenerator.selectRandomAnswers(), "plead", "chimp");
+        GameLog guesses = quordleBot( quordleGenerator.selectRandomAnswers());
         System.out.println(guesses.getGuessLog() +" "+ guesses.getGuessesByWord());
     }
 
@@ -21,18 +19,16 @@ public class varArgQuordleBot {
      * would choose vs. a person's choice
      */
 
-    public static GameLog quordleBot(@Nullable String givenGuess, String[] givenAnswers, String... presetGuessesAfterFirst){
-        GameLog gameLog = new GameLog();
-        gameLog.setGuessLog(presetGuessesAfterFirst);
-        String guess;
-        if (givenGuess != null) {
-            guess = givenGuess;
-        } else {
-            guess = "pouch"; // default first guess should be the highest scoring, "pouch" is a placeholder.
-        }
+    public static GameLog quordleBot(String[] givenAnswers, String... presetGuessesAfterFirst){
         String[] answers = givenAnswers;
         String[][] wordPossibilities = new String[][] {wordArray, wordArray, wordArray, wordArray};
         int unknownAnswers = 4;
+        String guess;
+        if (presetGuessesAfterFirst.length > 0) {
+            guess = presetGuessesAfterFirst[0];
+        } else {
+            guess = GuessOptimizer.nextGuessFinder(wordPossibilities, unknownAnswers);; // "trace"
+        }
         int[] guessesNeeded = new int[] {DEFAULT, DEFAULT, DEFAULT, DEFAULT};
         String[] guessLog = new String[9];
         for (int i = 0; i < presetGuessesAfterFirst.length; i++){
@@ -63,6 +59,6 @@ public class varArgQuordleBot {
                 guess = guessLog[guessNum];
             }
         }
-        return new GameLog(givenGuess, answers, guessLog, guessesNeeded);
+        return new GameLog(guessLog[0], answers, guessLog, guessesNeeded);
     }
 }
