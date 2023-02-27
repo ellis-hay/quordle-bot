@@ -70,8 +70,11 @@ public class GameLog implements Serializable {
     }
 
     public String getPossibleWordsStringByRound(int roundNumber) {
-        return possibilitiesByRound[roundNumber].toString();
-    };
+        if (possibilitiesByRound[roundNumber] != null) {
+            return possibilitiesByRound[roundNumber].toString();
+        }
+        return "Round does not exist";
+    }
 
     public void setStartingWord(String startingWord) {
         this.startingWord = startingWord;

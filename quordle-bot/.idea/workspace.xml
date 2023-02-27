@@ -49,7 +49,7 @@
       <recent name="C:\Users\Student\personal_projects\src\quordle-bot\src\main\Wordlists" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PossibleWordsLeftTest">
+  <component name="RunManager" selected="Application.QuordleBot">
     <configuration name="QuordleBot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.quordlebot.QuordleBot" />
       <module name="quordle-bot" />
@@ -125,10 +125,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.QuordleBot" />
         <item itemvalue="JUnit.PossibleWordsLeftTest" />
         <item itemvalue="JUnit.PossibleWordsLeftTest.toStringPWLReturnsLongArraysCorrectly" />
         <item itemvalue="JUnit.PossibleWordsLeftTest.toStringPWLReturnsInCorrectFormat" />
-        <item itemvalue="Application.QuordleBot" />
         <item itemvalue="Application.varArgQuordleBot" />
       </list>
     </recent_temporary>
@@ -151,6 +151,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/quordlebot/GuessAnswerDiagramFileMaker.java</url>
           <line>10</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/quordlebot/GuessOptimizer.java</url>
+          <line>113</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

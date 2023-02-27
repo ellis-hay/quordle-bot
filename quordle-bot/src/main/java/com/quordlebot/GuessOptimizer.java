@@ -1,6 +1,8 @@
 package com.quordlebot;
 
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static com.quordlebot.QuordleBot.wordArray;
 
@@ -11,19 +13,19 @@ public final class GuessOptimizer {
     public static char[] getGuessCorrectness (String guess, String answer) {
         char[] guessArray = guess.toCharArray();
         char[] answerArray = answer.toCharArray();
-        Map<Character, Byte> lettersInAnswer = new HashMap<>();
+        Map<Character, Integer> lettersInAnswer = new HashMap<>();
         for (int i = 0; i < 5; i++) {
             if (guessArray[i] == answerArray[i]) {
                 answerArray[i] = '$'; //Green Tile
             } else {
-                lettersInAnswer.merge(answerArray[i], (byte) 1, (oldValue, newValue) -> (byte)(oldValue + newValue));
+                lettersInAnswer.merge(answerArray[i],  1, Integer::sum);
             }
         } for (int i = 0; i < 5; i++) {
             if (answerArray[i] == '$') {
                 ;
             }else if (lettersInAnswer.containsKey(guessArray[i]) && lettersInAnswer.get(guessArray[i]) > 0) {
                 answerArray[i] = '*'; //Yellow Tile
-                lettersInAnswer.put(guessArray[i], (byte) (lettersInAnswer.get(guessArray[i]) - 1));
+                lettersInAnswer.put(guessArray[i], (lettersInAnswer.get(guessArray[i]) - 1));
             } else {
                 answerArray[i] = '_'; //Blank
             }
@@ -68,6 +70,26 @@ public final class GuessOptimizer {
         }
         //System.out.println(wordToWordDiagrams.toString());
         return wordToWordDiagrams;
+    }
+
+    private static Map<String, Map<String, Integer>> wordToWordDiagramsExecutor() {
+        long start = System.currentTimeMillis();
+        Map<String, Map<String, Integer>> wordToWordDiagrams = new HashMap<>();
+        //ThreadGroup threadGroup = new ThreadGroup("mapThreadGroup");
+        //wordArray.length() / 4 = 577
+        int coresAvailable = Runtime.getRuntime().availableProcessors();
+        ExecutorService executorService = Executors.newFixedThreadPool(coresAvailable);
+        int indexRange = wordArray.length / coresAvailable;
+        for (int i = 0; i < coresAvailable; i++) {
+            int startIndex = i * indexRange;
+            int endIndex = startIndex + indexRange;
+            if (i == (coresAvailable - 1))
+                endIndex = 2309;
+            executorService.execute(new WordDiagramMapMultithreader(startIndex, endIndex));
+        }
+        long end = System.currentTimeMillis();
+        long duration = end - start;
+        return WordDiagramMapMultithreader.getWordToWordDiagrams();
     }
 
     private static Map<String, Double> wordByExpectedOutcome(String[][] wordPossibilityArrays, int answersToBeGuessed) {

@@ -9,7 +9,7 @@ public class QuordleBot {
     static final int DEFAULT = 15;
 
     public static void main(String[] args) {
-        GameLog guesses= quordleBot("trace", new String[] {"tread", "leper", "eject", "plait"});
+        GameLog guesses = quordleBot("loamy", new String[] {"musky", "froze", "guild", "maple"});
         System.out.println(guesses.getGuessLog() +" "+ guesses.getGuessesByWord());
 
         /*long start = System.currentTimeMillis();
