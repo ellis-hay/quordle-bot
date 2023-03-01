@@ -2,6 +2,8 @@ package com.quordlebot;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import static com.quordlebot.QuordleBot.wordArray;
 
@@ -9,7 +11,7 @@ public class WordDiagramMapMultithreader implements Runnable{
 
     private int wordArrayStart;
     private int wordArrayEnd;
-    private static volatile Map<String, Map<String, Integer>> wordToWordDiagrams = new HashMap<>();
+    private static volatile ConcurrentMap<String, Map<String, Integer>> wordToWordDiagrams = new ConcurrentHashMap<>();
 
     public WordDiagramMapMultithreader(int wordArrayStart, int wordArrayEndExclusive){
         this.wordArrayStart = wordArrayStart;
@@ -18,7 +20,6 @@ public class WordDiagramMapMultithreader implements Runnable{
 
     @Override
     public void run() {
-        System.out.println();
         long start = System.currentTimeMillis();
         for (int i = wordArrayStart; i < wordArrayEnd; i++) {
             Map<String, Integer> stringDiagramMap = new HashMap<>();
@@ -29,14 +30,10 @@ public class WordDiagramMapMultithreader implements Runnable{
             }
             wordToWordDiagrams.put(wordArray[i], stringDiagramMap);
             wordToWordDiagrams.size();
-            System.out.println(wordArray[i]);
         }
-        long end = System.currentTimeMillis();
-        System.out.println("Number started: " + wordArrayStart + " Number end: " + wordArrayEnd + " took " +
-        (end - start) + " milliseconds");
     }
 
-    public static Map<String, Map<String, Integer>> getWordToWordDiagrams() {
+    public static ConcurrentMap<String, Map<String, Integer>> getWordToWordDiagrams() {
         return wordToWordDiagrams;
     }
 }

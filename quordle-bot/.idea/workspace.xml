@@ -48,6 +48,9 @@
       <recent name="C:\Users\Student\personal_projects\src\quordle-bot\src\main\java\com\quordlebot" />
       <recent name="C:\Users\Student\personal_projects\src\quordle-bot\src\main\Wordlists" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.quordlebot" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.QuordleBot">
     <configuration name="QuordleBot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -151,11 +154,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/quordlebot/GuessAnswerDiagramFileMaker.java</url>
           <line>10</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/quordlebot/GuessOptimizer.java</url>
-          <line>113</line>
-          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

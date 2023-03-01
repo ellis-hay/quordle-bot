@@ -1,14 +1,17 @@
 package com.quordlebot;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import static com.quordlebot.QuordleBot.wordArray;
 
 public final class GuessOptimizer {
 
-    private static final Map<String, Map<String, Integer>> WORD_TO_WORD_DIAGRAM_MAP = wordToWordDiagrams();
+    private static final ThreadLocal<ConcurrentMap<String, Map<String, Integer>>> WORD_TO_WORD_DIAGRAM_MAP =
+            ThreadLocal.withInitial(GuessOptimizer::wordToWordDiagrams);
 
     public static char[] getGuessCorrectness (String guess, String answer) {
         char[] guessArray = guess.toCharArray();
@@ -57,26 +60,7 @@ public final class GuessOptimizer {
         return Integer.parseInt(String.valueOf(diagram));
     }
 
-    private static Map<String, Map<String, Integer>> wordToWordDiagrams() {
-        Map<String, Map<String, Integer>> wordToWordDiagrams = new HashMap<>();
-        for (String possibleGuess : wordArray) {
-            Map<String, Integer> stringDiagramMap = new HashMap<>();
-            for (String possibleAnswer : wordArray) {
-                char[] diagram = getGuessCorrectness(possibleGuess, possibleAnswer);
-                int base3representation = diagramToBase3(diagram);
-                stringDiagramMap.put(possibleAnswer, base3representation);
-            }
-            wordToWordDiagrams.put(possibleGuess, stringDiagramMap);
-        }
-        //System.out.println(wordToWordDiagrams.toString());
-        return wordToWordDiagrams;
-    }
-
-    private static Map<String, Map<String, Integer>> wordToWordDiagramsExecutor() {
-        long start = System.currentTimeMillis();
-        Map<String, Map<String, Integer>> wordToWordDiagrams = new HashMap<>();
-        //ThreadGroup threadGroup = new ThreadGroup("mapThreadGroup");
-        //wordArray.length() / 4 = 577
+    private static ConcurrentMap<String, Map<String, Integer>> wordToWordDiagrams() {
         int coresAvailable = Runtime.getRuntime().availableProcessors();
         ExecutorService executorService = Executors.newFixedThreadPool(coresAvailable);
         int indexRange = wordArray.length / coresAvailable;
@@ -87,8 +71,12 @@ public final class GuessOptimizer {
                 endIndex = 2309;
             executorService.execute(new WordDiagramMapMultithreader(startIndex, endIndex));
         }
-        long end = System.currentTimeMillis();
-        long duration = end - start;
+        executorService.shutdown();
+        try {
+            executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+        } catch (InterruptedException ignored) {
+            System.out.println("A thread interruption occurred"); //Should not reach this code
+        }
         return WordDiagramMapMultithreader.getWordToWordDiagrams();
     }
 
@@ -101,7 +89,7 @@ public final class GuessOptimizer {
                 Set<Integer> possibleDiagrams = new HashSet<>();
                 int wordDivisor = wordPossibilityArrays[i].length;
                 for (String possibleAnswer : wordPossibilityArrays[i]) {
-                    Integer diagram = WORD_TO_WORD_DIAGRAM_MAP.get(possibleGuess).get(possibleAnswer);
+                    Integer diagram = WORD_TO_WORD_DIAGRAM_MAP.get().get(possibleGuess).get(possibleAnswer);
                     possibleDiagrams.add(diagram);
                     if (diagram.equals(33333)) {
                         wordDivisor -= answersToBeGuessed;
