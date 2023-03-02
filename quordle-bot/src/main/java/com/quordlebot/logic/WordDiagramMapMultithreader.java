@@ -1,11 +1,11 @@
-package com.quordlebot;
+package com.quordlebot.logic;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import static com.quordlebot.QuordleBot.wordArray;
+import static com.quordlebot.logic.QuordleBot.wordArray;
 
 public class WordDiagramMapMultithreader implements Runnable{
 

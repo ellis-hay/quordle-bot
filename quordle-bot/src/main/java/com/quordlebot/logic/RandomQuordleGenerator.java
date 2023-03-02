@@ -1,10 +1,10 @@
-package com.quordlebot;
+package com.quordlebot.logic;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.quordlebot.QuordleBot.wordArray;
+import static com.quordlebot.logic.QuordleBot.wordArray;
 
 public class RandomQuordleGenerator {
     static int UPPERBOUND = wordArray.length; // =2309

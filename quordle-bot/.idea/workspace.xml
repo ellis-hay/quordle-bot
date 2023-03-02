@@ -36,15 +36,16 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/quordlebot" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/quordlebot/logic" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.updates" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Student\GitRepos\QuordleSolverAndGame\quordle-bot\src\main\java\com\quordlebot\logic" />
       <recent name="C:\Users\Student\personal_projects\src\quordle-bot\src\main\java\com\quordlebot" />
       <recent name="C:\Users\Student\personal_projects\src\quordle-bot\src\main\Wordlists" />
     </key>

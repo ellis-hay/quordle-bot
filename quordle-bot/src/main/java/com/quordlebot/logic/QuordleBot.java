@@ -1,4 +1,4 @@
-package com.quordlebot;
+package com.quordlebot.logic;
 
 import java.util.Arrays;
 

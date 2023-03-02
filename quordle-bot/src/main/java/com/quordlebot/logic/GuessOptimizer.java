@@ -1,4 +1,4 @@
-package com.quordlebot;
+package com.quordlebot.logic;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentMap;
@@ -6,7 +6,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import static com.quordlebot.QuordleBot.wordArray;
+import static com.quordlebot.logic.QuordleBot.wordArray;
 
 public final class GuessOptimizer {
 

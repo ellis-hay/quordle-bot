@@ -1,4 +1,4 @@
-package com.quordlebot;
+package com.quordlebot.logic;
 
 public final class QuordleRoundOutcome {
 

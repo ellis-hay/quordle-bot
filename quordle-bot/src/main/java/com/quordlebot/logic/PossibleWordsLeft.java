@@ -1,4 +1,4 @@
-package com.quordlebot;
+package com.quordlebot.logic;
 
 public class PossibleWordsLeft {
     private final String STRING_OPEN = "Possible Words:\n";

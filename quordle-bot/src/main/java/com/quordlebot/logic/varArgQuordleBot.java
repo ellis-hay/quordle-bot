@@ -1,8 +1,8 @@
-package com.quordlebot;
+package com.quordlebot.logic;
 
 import java.util.Arrays;
 
-import static com.quordlebot.QuordleBot.wordArray;
+import static com.quordlebot.logic.QuordleBot.wordArray;
 
 public class varArgQuordleBot {
     static final char[] CORRECT_PATTERN = new char[] {'$', '$', '$', '$', '$'};
