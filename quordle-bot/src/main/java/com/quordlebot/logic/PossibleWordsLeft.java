@@ -1,6 +1,8 @@
 package com.quordlebot.logic;
 
-public class PossibleWordsLeft {
+import java.io.Serializable;
+
+public class PossibleWordsLeft implements Serializable {
     private final String STRING_OPEN = "Possible Words:\n";
     private final int WORD_PLUS_NEW_LINE_LENGTH = 6;
     private final int EXTRA_APPENDAGES_CAPACITY = 92;

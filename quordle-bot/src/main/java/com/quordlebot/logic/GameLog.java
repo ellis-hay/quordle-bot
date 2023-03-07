@@ -13,8 +13,6 @@ public class GameLog implements Serializable {
     private int[] guessesByWord;
     private PossibleWordsLeft[] possibilitiesByRound;
 
-    public GameLog(){};
-
     public GameLog(String startingWord, String[] answers, String[] guessLog, int[] guessesByWord,
                    PossibleWordsLeft[] possibilitiesByRound) {
         this.startingWord = startingWord;
@@ -75,6 +73,8 @@ public class GameLog implements Serializable {
         }
         return "Round does not exist";
     }
+
+
 
     public void setStartingWord(String startingWord) {
         this.startingWord = startingWord;

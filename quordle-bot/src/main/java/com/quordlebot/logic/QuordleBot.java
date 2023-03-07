@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class QuordleBot {
     static WordListReader wordListReader = new WordListReader();
-    static String[] wordArray = wordListReader.wordListExtractor();
+    public static String[] wordArray = wordListReader.wordListExtractor();
     static final char[] CORRECT_PATTERN = new char[] {'$', '$', '$', '$', '$'};
     static final int DEFAULT = 15;
 
