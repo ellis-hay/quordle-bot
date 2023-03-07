@@ -1,0 +1,11 @@
+com\quordlebot\logic\PossibleWordsLeft.class
+com\quordlebot\logic\RandomQuordleGenerator.class
+com\quordlebot\logic\GuessOptimizer.class
+com\quordlebot\Application.class
+com\quordlebot\controllers\QuordleSolverController.class
+com\quordlebot\logic\WordListReader.class
+com\quordlebot\logic\GameLog.class
+com\quordlebot\logic\varArgQuordleBot.class
+com\quordlebot\logic\WordDiagramMapMultithreader.class
+com\quordlebot\logic\QuordleBot.class
+com\quordlebot\logic\QuordleRoundOutcome.class

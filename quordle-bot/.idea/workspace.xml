@@ -53,9 +53,9 @@
       <recent name="com.quordlebot" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.QuordleBot">
-    <configuration name="QuordleBot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.quordlebot.QuordleBot" />
+  <component name="RunManager" selected="Application.Application">
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.quordlebot.Application" />
       <module name="quordle-bot" />
       <extension name="coverage">
         <pattern>
@@ -67,8 +67,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="varArgQuordleBot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.quordlebot.varArgQuordleBot" />
+    <configuration name="QuordleBot (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.quordlebot.logic.QuordleBot" />
+      <module name="quordle-bot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.quordlebot.logic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuordleBot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.quordlebot.QuordleBot" />
       <module name="quordle-bot" />
       <extension name="coverage">
         <pattern>
@@ -95,22 +108,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PossibleWordsLeftTest.toStringPWLReturnsInCorrectFormat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="quordle-bot" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.quordlebot.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.quordlebot" />
-      <option name="MAIN_CLASS_NAME" value="com.quordlebot.PossibleWordsLeftTest" />
-      <option name="METHOD_NAME" value="toStringPWLReturnsInCorrectFormat" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PossibleWordsLeftTest.toStringPWLReturnsLongArraysCorrectly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="quordle-bot" />
       <extension name="coverage">
@@ -129,11 +126,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Application" />
+        <item itemvalue="Application.QuordleBot (1)" />
         <item itemvalue="Application.QuordleBot" />
         <item itemvalue="JUnit.PossibleWordsLeftTest" />
         <item itemvalue="JUnit.PossibleWordsLeftTest.toStringPWLReturnsLongArraysCorrectly" />
-        <item itemvalue="JUnit.PossibleWordsLeftTest.toStringPWLReturnsInCorrectFormat" />
-        <item itemvalue="Application.varArgQuordleBot" />
       </list>
     </recent_temporary>
   </component>
