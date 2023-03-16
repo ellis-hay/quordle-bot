@@ -1,0 +1,56 @@
+html {
+    font-family: 'Questrial', sans-serif;
+}
+
+body{
+    background-color: 	#E6F1F1;
+    height: 1vw;
+    display: grid;
+    grid-template-columns: 1fr 265px 265px 1fr;
+    grid-template-rows: .8fr 7.1fr 2.1fr;
+    grid-template-areas:
+    "header header header header"
+    "sa1 sa1 sa2 sa2"
+    "sa3 sa3 sa4 sa4"
+    ". keyboard keyboard ."
+}
+
+.solve-area-1{
+    background-color: #b11e23;
+    grid-area: sa1;
+}
+
+.solve-area-2{
+    background-color: #12357a;
+    grid-area: sa2;
+}
+
+.solve-area-3 {
+    background-color: #1d1d1b;
+    grid-area: sa3;
+}
+
+.solve-area-4 {
+    background-color: #e29726;
+    grid-area: sa4;
+}
+
+
+
+.keyboard {
+    grid-area: keyboard;
+    background-color: #fcfcec9a;
+    max-width: 530px;
+    display: flex;
+    flex-direction: column;
+}
+.key{
+    font-family: 'Questrial', sans-serif;
+}
+
+.keyboard-row {
+    background-color: #f0ffff2c;
+    display: flex;
+    justify-content: center;
+    
+}

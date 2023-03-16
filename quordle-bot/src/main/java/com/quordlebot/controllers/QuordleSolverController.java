@@ -25,7 +25,7 @@ public class QuordleSolverController {
 
     @RequestMapping(path = "", method = RequestMethod.GET)
     public GameLog showSpecificGame(@RequestParam(defaultValue = "") String guess, @RequestParam String[] answers) {
-        GameLog gameLog = null;
+        GameLog gameLog;
         Arrays.sort(wordArray);
         if (answers.length != 4) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There must be 4 answer words in query");
