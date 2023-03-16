@@ -35,6 +35,29 @@ body{
     grid-area: sa4;
 }
 
+.solve-area {
+    display: flex;
+}
+
+.guess-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.guess-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.guess-box {
+    height: 3.3%;
+    width: 2.9%;
+}
+
+.solve-area-1 .guess-box {
+    background-color: #c15354;
+}
+
 
 
 .keyboard {
@@ -44,9 +67,11 @@ body{
     display: flex;
     flex-direction: column;
 }
+
 .key{
     font-family: 'Questrial', sans-serif;
 }
+
 
 .keyboard-row {
     background-color: #f0ffff2c;
