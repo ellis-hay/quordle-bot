@@ -41,14 +41,16 @@ body{
 }
 
 .solve-area {
-    display: flex;
+    display: grid;
     justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "guesses words";
 }
 
 .guess-area {
     display: flex;
     flex-direction: column;
-    
+    grid-area: guesses;
 }
 
 .guess-row {
@@ -58,16 +60,21 @@ body{
 }
 
 .guess-box {
-    height: 5vh;
-    font-size: 4vh;
+    height: calc(16px + 3.5vh);
+    font-size: calc(16px + 3vh);
     margin: .1rem;
-    width:  5vh;
+    width:  1vh;
     flex: 0 0 100%;
     border-radius: 3px;
+    justify-content: center;
 }
 
 .solve-area-1 .guess-box {
     background-color: #c15354;
+}
+
+.possible-words-list-area {
+    grid-area: words;
 }
 
 
