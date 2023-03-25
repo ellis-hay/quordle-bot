@@ -3,7 +3,7 @@ html {
 }
 
 body{
-    background-color: 	#E6F1F1;
+    background-color: 	#EFE7DA;
     height: 97vh;
     width: 98vw;
     display: grid;
@@ -42,7 +42,7 @@ body{
 
 .solve-area {
     display: grid;
-    justify-content: space-between;
+    justify-content: space-between; 
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "guesses words";
 }
@@ -63,14 +63,26 @@ body{
     height: calc(16px + 3.5vh);
     font-size: calc(16px + 3vh);
     margin: .1rem;
-    width:  1vh;
-    flex: 0 0 100%;
+    width:  calc(16px + 3.5vh);
+    /* flex: 0 0 100%; */
     border-radius: 3px;
     justify-content: center;
 }
 
 .solve-area-1 .guess-box {
     background-color: #c15354;
+}
+
+.solve-area-2 .guess-box {
+    background-color: #6f80a2;
+}
+
+.solve-area-3 .guess-box {
+    background-color: #827e7e;
+}
+
+.solve-area-4 .guess-box {
+    background-color: #e9c389;
 }
 
 .possible-words-list-area {
