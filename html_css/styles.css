@@ -8,8 +8,7 @@ body{
     width: 98vw;
     display: grid;
     grid-template-columns: 1fr 265px 265px 1fr;
-    grid-template-rows: .8fr 3.65fr 3.65fr;
-    gap: 10px/5px;
+    grid-template-rows: 1fr 3.75fr 3.65fr;
     grid-template-areas:
     "ga1 header header ga2"
     "ga1 pwla1 pwla2 ga2"
@@ -129,20 +128,32 @@ header {
 
 .keyboard {
     grid-area: keyboard;
-    background-color: #fcfcec9a;
     max-width: 530px;
     display: flex;
     flex-direction: column;
 }
 
 .key{
+    display: flex;
+    background-color: #EFE7DA;
     font-family: 'Questrial', sans-serif;
+    font-size: calc(16px + 1.5vh);
+    font-weight: 500;
+    height: 100%;
+    aspect-ratio: 1/1;
+    justify-content: center;
+    align-items: center;
+}
+
+.key-special{
+    flex: 0 0 14.5% ;
 }
 
 
 .keyboard-row {
-    background-color: #f0ffff2c;
     display: flex;
-    justify-content: center;
-    
+    justify-content: space-evenly;
+    flex-grow: 1;
+    height: calc(16px + 4vh);
+    margin-top: 2px;
 }
