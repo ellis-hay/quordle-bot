@@ -9,6 +9,7 @@ body{
     display: grid;
     grid-template-columns: 1fr 265px 265px 1fr;
     grid-template-rows: .8fr 3.65fr 3.65fr;
+    gap: 10px/5px;
     grid-template-areas:
     "ga1 header header ga2"
     "ga1 pwla1 pwla2 ga2"
@@ -16,8 +17,10 @@ body{
     "ga3 keyboard keyboard ga4"
 }
 
-.header {
+header {
     grid-area: header;
+    align-self: flex-start;
+    justify-self: center;
 }
 
 .guess-area-1, .pwla-1{
@@ -71,21 +74,23 @@ body{
 .guess-area {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .guess-row {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .guess-box {
     display: flex;
-    /* height: calc(16px + 3.5vh); */
+    height: 100%;
     margin: .1rem;
-    width:  calc(16px + 3.5vh);
+    /* width:  calc(16px + 3.5vh); */
     border-radius: 3px;
     justify-content: center;
+    align-items: center;
 }
 
 .guess-area-1 .guess-box {
@@ -104,18 +109,22 @@ body{
     background-color: #e9c389;
 }
 
-.guess-row{
-    aspect-ratio : 1 / 5;
-}
-
 .collapsed{
-    height: 8.33%;
+    height: 5%;
 }
 
 .current{
-    height: 25%;
+    height: 15%;
+    box-sizing: content-box;
 }
 
+.collapsed .guess-box{
+    aspect-ratio: 3/1;
+}
+
+.current .guess-box{
+    aspect-ratio: 1/1;
+}
 
 
 .keyboard {
