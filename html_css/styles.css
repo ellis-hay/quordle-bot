@@ -8,49 +8,69 @@ body{
     width: 98vw;
     display: grid;
     grid-template-columns: 1fr 265px 265px 1fr;
-    grid-template-rows: .8fr 7.1fr 2.1fr;
+    grid-template-rows: .8fr 3.65fr 3.65fr;
     grid-template-areas:
-    "header header header header"
-    "sa1 sa1 sa2 sa2"
-    "sa3 sa3 sa4 sa4"
-    ". keyboard keyboard ."
+    "ga1 header header ga2"
+    "ga1 pwla1 pwla2 ga2"
+    "ga3 pwla3 pwla4 ga4"
+    "ga3 keyboard keyboard ga4"
 }
 
 .header {
     grid-area: header;
 }
 
-.solve-area-1{
+.guess-area-1, .pwla-1{
     background-color: #b11e23;
-    grid-area: sa1;
 }
 
-.solve-area-2{
+.guess-area-1{
+    grid-area: ga1;
+}
+
+.pwla-1{
+    grid-area: pwla1;
+}
+
+.guess-area-2, .pwla-2{
     background-color: #12357a;
-    grid-area: sa2;
 }
 
-.solve-area-3 {
+.guess-area-2{
+    grid-area: ga2;
+}
+
+.pwla-2{
+    grid-area: pwla2;
+}
+
+.guess-area-3, .pwla-3 {
     background-color: #1d1d1b;
-    grid-area: sa3;
 }
 
-.solve-area-4 {
+.guess-area-3{
+    grid-area: ga3;
+}
+
+.pwla-3{
+    grid-area: pwla3;
+}
+
+.guess-area-4, .pwla-4 {
     background-color: #e29726;
-    grid-area: sa4;
 }
 
-.solve-area {
-    display: grid;
-    justify-content: space-between; 
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "guesses words";
+.guess-area-4{
+    grid-area: ga4;
+}
+
+.pwla-4{
+    grid-area: pwla4;
 }
 
 .guess-area {
     display: flex;
     flex-direction: column;
-    grid-area: guesses;
 }
 
 .guess-row {
@@ -60,33 +80,40 @@ body{
 }
 
 .guess-box {
-    height: calc(16px + 3.5vh);
-    font-size: calc(16px + 3vh);
+    display: flex;
+    /* height: calc(16px + 3.5vh); */
     margin: .1rem;
     width:  calc(16px + 3.5vh);
-    /* flex: 0 0 100%; */
     border-radius: 3px;
     justify-content: center;
 }
 
-.solve-area-1 .guess-box {
+.guess-area-1 .guess-box {
     background-color: #c15354;
 }
 
-.solve-area-2 .guess-box {
+.guess-area-2 .guess-box {
     background-color: #6f80a2;
 }
 
-.solve-area-3 .guess-box {
+.guess-area-3 .guess-box {
     background-color: #827e7e;
 }
 
-.solve-area-4 .guess-box {
+.guess-area-4 .guess-box {
     background-color: #e9c389;
 }
 
-.possible-words-list-area {
-    grid-area: words;
+.guess-row{
+    aspect-ratio : 1 / 5;
+}
+
+.collapsed{
+    height: 8.33%;
+}
+
+.current{
+    height: 25%;
 }
 
 
