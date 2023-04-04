@@ -75,13 +75,12 @@ public final class GuessOptimizer {
         try {
             executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
         } catch (InterruptedException ignored) {
-            System.out.println("A thread interruption occurred"); //Should not reach this code
+            System.out.println("A thread interruption occurred"); //Should not reach
         }
         return WordDiagramMapMultithreader.getWordToWordDiagrams();
     }
 
     private static Map<String, Double> wordByExpectedOutcome(String[][] wordPossibilityArrays, int answersToBeGuessed) {
-        long start = System.currentTimeMillis();
         Map<String, Double> propensityToShrinkPossibilitiesMap = new HashMap<>();
         for (String possibleGuess : wordArray) {
             double averagePossibilitiesAfterGuess = 0;
