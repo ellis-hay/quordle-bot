@@ -3,7 +3,7 @@
   <head-main/>
   <guess-area v-for="n in 4" :key = "n" :word-number = "n" :id="'grid' + n"/>
   <word-list-area v-for="n in 4" :key = "n" :word-number = "n" :id="'word-list-area' + n"/>
-  <keyboard/>
+  <keyboard id="keyboard"/>
 </body>
 </template>
 
@@ -54,8 +54,6 @@ body{
   grid-area: wla1;
 }
 
-
-
 #grid2, #word-list-area2{
   background-color: #12357a;
 }
@@ -67,7 +65,6 @@ body{
 #word-list-area2{
   grid-area: wla2;
 }
-
 
 #grid3, #word-list-area3{
   background-color: #1d1d1b;
@@ -81,7 +78,6 @@ body{
   grid-area: wla3;
 }
 
-
 #grid4, #word-list-area4{
   background-color: #e29726;
 }
@@ -92,6 +88,13 @@ body{
 
 #word-list-area4{
   grid-area: wla4;
+}
+
+#keyboard{
+  grid-area: keyboard;
+  max-width: 530px;
+  display: flex;
+  flex-direction: column;
 }
 
 </style>

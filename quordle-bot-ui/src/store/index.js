@@ -5,11 +5,22 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    currentGuess: 1,
+    currentGuessNumber: 1,
+    currentGuessLetters: []
+
   },
   getters: {
   },
   mutations: {
+    ADD_LETTER(state, letter){
+      state.currentGuessLetters.push(letter);
+    },
+    REMOVE_LETTER(state){
+      state.currentGuessLetters.pop();
+    },
+    RESET_CURRENT_LETTERS(state){
+      state.currentGuessLetters = [];
+    }
   },
   actions: {
   },

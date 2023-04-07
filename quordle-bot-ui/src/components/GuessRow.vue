@@ -1,5 +1,5 @@
 <template>
-  <div class="row" :class="{current: $store.state.currentGuess === rowNumber}">
+  <div class="row" :class="{current: $store.state.currentGuessNumber === rowNumber}">
       <div class="guess-box"></div>
       <div class="guess-box"></div>
       <div class="guess-box"></div>
@@ -44,5 +44,20 @@ export default {
     aspect-ratio: 1/1;
 }
 
+#grid1 .guess-box {
+    background-color: #c15354;
+}
+
+#grid2 .guess-box {
+    background-color: #6f80a2;
+}
+
+#grid3 .guess-box {
+    background-color: #827e7e;
+}
+
+#grid4 .guess-box {
+    background-color: #e9c389;
+}
 
 </style>
