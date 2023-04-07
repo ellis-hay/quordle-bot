@@ -2,10 +2,7 @@
 <body>
   <head-main/>
   <guess-area v-for="n in 4" :key = "n" :word-number = "n" :id="'grid' + n"/>
-  <word-list-area/>
-  <word-list-area/>
-  <word-list-area/>
-  <word-list-area/>
+  <word-list-area v-for="n in 4" :key = "n" :word-number = "n" :id="'word-list-area' + n"/>
   <keyboard/>
 </body>
 </template>
@@ -40,25 +37,62 @@ body{
     grid-template-rows: 1fr 3.75fr 3.65fr;
     grid-template-areas:
     "ga1 top top ga2"
-    "ga1 pwla1 pwla2 ga2"
-    "ga3 pwla3 pwla4 ga4"
+    "ga1 wla1 wla2 ga2"
+    "ga3 wla3 wla4 ga4"
     "ga3 keyboard keyboard ga4"
 }
-#grid1{
-  grid-area: ga1;
+
+#grid1, #word-list-area1{
   background-color: #b11e23;
 }
-#grid2{
-  grid-area: ga2;
+
+#grid1{
+  grid-area: ga1;
+}
+
+#word-list-area1{
+  grid-area: wla1;
+}
+
+
+
+#grid2, #word-list-area2{
   background-color: #12357a;
 }
-#grid3{
-  grid-area: ga3;
+
+#grid2{
+  grid-area: ga2;
+}
+
+#word-list-area2{
+  grid-area: wla2;
+}
+
+
+#grid3, #word-list-area3{
   background-color: #1d1d1b;
 }
-#grid4{
-  grid-area: ga4;
+
+#grid3{
+  grid-area: ga3;
+}
+
+#word-list-area3{
+  grid-area: wla3;
+}
+
+
+#grid4, #word-list-area4{
   background-color: #e29726;
 }
+
+#grid4{
+  grid-area: ga4;
+}
+
+#word-list-area4{
+  grid-area: wla4;
+}
+
 </style>
 
