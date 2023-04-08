@@ -1,17 +1,13 @@
 <template>
   <div class="row" :class="{current: $store.state.currentGuessNumber === rowNumber}">
-      <div class="guess-box"></div>
-      <div class="guess-box"></div>
-      <div class="guess-box"></div>
-      <div class="guess-box"></div>
-      <div class="guess-box"></div>
+      <div class="guess-box" v-for="letter in row" :key="letter.index" :letter="letter">{{letter}}</div>
   </div>
 </template>
 
 <script>
 export default {
     name: 'guess-row',
-    props: ['rowNumber']
+    props: ['row', 'rowNumber']
 }
 </script>
 

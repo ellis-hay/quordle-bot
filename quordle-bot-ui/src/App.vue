@@ -1,8 +1,8 @@
 <template>
 <body>
   <head-main/>
-  <guess-area v-for="n in 4" :key = "n" :word-number = "n" :id="'grid' + n"/>
-  <word-list-area v-for="n in 4" :key = "n" :word-number = "n" :id="'word-list-area' + n"/>
+  <guess-area v-for="n in 4" :key = "'GA' + n" :word-number = "n" :id="'grid' + n"/>
+  <word-list-area v-for="n in 4" :key = "'WLA' + n" :word-number = "n" :id="'word-list-area' + n"/>
   <keyboard id="keyboard"/>
 </body>
 </template>
@@ -23,10 +23,10 @@ export default {
   methods: {
     addTypedLetter(event) {
       console.log(event.code)
-      if (this.$store.state.currentGuessLetters.length < 5  && event.which > 64 && event.which < 91){ //64=A 90=Z
+      if (this.$store.state.currentGuessLetters.length < 5  && event.which > 64 && event.which < 91){ //65=A 90=Z
         this.$store.commit('ADD_LETTER', event.key.toUpperCase());
       } if (event.which == 8) { //Backspace
-        this.$store.commit('REMOVE_LETTER')
+        this.$store.commit('REMOVE_LETTER');
       }
     }
   },

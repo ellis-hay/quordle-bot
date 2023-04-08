@@ -6,7 +6,20 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     currentGuessNumber: 1,
-    currentGuessLetters: []
+    guessed: false,
+    bombedOut: false,
+    currentGuessLetters: [],
+    guesses: [
+      ['','','','',''],
+      ['','','','',''],
+      ['','','','',''],
+      ['','','','',''],
+      ['','','','',''],
+      ['','','','',''],
+      ['','','','',''],
+      ['','','','',''],
+      ['','','','','']
+    ]
 
   },
   getters: {
