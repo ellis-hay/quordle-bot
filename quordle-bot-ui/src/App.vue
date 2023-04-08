@@ -19,7 +19,24 @@ export default {
     Keyboard,
     HeadMain,
     WordListArea
-  }
+  },
+  methods: {
+    addTypedLetter(event) {
+      console.log(event.code)
+      if (this.$store.state.currentGuessLetters.length < 5  && event.which > 64 && event.which < 91){ //64=A 90=Z
+        this.$store.commit('ADD_LETTER', event.key.toUpperCase());
+      } if (event.which == 8) { //Backspace
+        this.$store.commit('REMOVE_LETTER')
+      }
+    }
+  },
+  mounted() {
+    let self = this; 
+    window.addEventListener('keydown', function(event) {
+      if (event.repeat) return;
+      self.addTypedLetter(event); // declared in your component methods
+    });
+}
 }
 </script>
 
