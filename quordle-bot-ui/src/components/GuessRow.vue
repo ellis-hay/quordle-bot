@@ -1,5 +1,5 @@
 <template>
-  <div class="row" :class="{current: $store.state.currentGuessIndex === rowIndexr}">
+  <div class="row" :class="{current: $store.state.currentGuessIndex === rowIndex}">
       <div class="guess-box" v-for="letter in row" :key="letter.index" :letter="letter">{{letter}}</div>
   </div>
 </template>
@@ -7,7 +7,7 @@
 <script>
 export default {
     name: 'guess-row',
-    props: ['row', 'rowIndexr']
+    props: ['row', 'rowIndex']
 }
 </script>
 
