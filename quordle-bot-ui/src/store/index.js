@@ -5,10 +5,10 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    currentGuessNumber: 1,
-    guessed: false,
+    currentGuessIndex: 0,
+    guessedAllWords: false,
     bombedOut: false,
-    currentGuessLetters: [],
+    currentGuessLetters: ['A', 'B', 'C', 'D', 'E'],
     guesses: [
       ['','','','',''],
       ['','','','',''],
@@ -23,6 +23,16 @@ export default new Vuex.Store({
 
   },
   getters: {
+    updatedGuesses: state =>{
+      const currentLetters = [...state.currentGuessLetters];
+      while (currentLetters.length < 5){
+        currentLetters.push('');
+      }
+      if (!state.guessedAllWords && !state.bombedOut){
+        state.guesses[state.currentGuessIndex] = currentLetters;
+      }
+      return state.guesses;
+    } 
   },
   mutations: {
     ADD_LETTER(state, letter){
@@ -40,3 +50,4 @@ export default new Vuex.Store({
   modules: {
   }
 })
+
