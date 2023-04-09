@@ -1,6 +1,6 @@
 <template>
 <body>
-  <head-main/>
+  <middle-main id="middle-main"/>
   <guess-area v-for="n in 4" :key = "'GA' + n" :word-number = "n" :id="'grid' + n"/>
   <word-list-area v-for="n in 4" :key = "'WLA' + n" :word-number = "n" :id="'word-list-area' + n"/>
   <keyboard id="keyboard"/>
@@ -10,19 +10,18 @@
 <script>
 import GuessArea from './components/GuessArea.vue';
 import Keyboard from './components/QuordleKeyboard.vue';
-import HeadMain from './components/HeadMain.vue';
+import MiddleMain from './components/MiddleMain.vue';
 import WordListArea from './components/WordListArea.vue'
 
 export default {
   components: {
     GuessArea,
     Keyboard,
-    HeadMain,
+    MiddleMain,
     WordListArea
   },
   methods: {
     addTypedLetter(event) {
-      console.log(event.code)
       if (this.$store.state.currentGuessLetters.length < 5  && event.which > 64 && event.which < 91){ //65=A 90=Z
         this.$store.commit('ADD_LETTER', event.key.toUpperCase());
       } if (event.which == 8) { //Backspace
@@ -53,10 +52,16 @@ body{
     grid-template-columns: 1fr 265px 265px 1fr;
     grid-template-rows: 1fr 3.75fr 3.65fr;
     grid-template-areas:
-    "ga1 top top ga2"
+    "ga1 mm mm ga2"
     "ga1 wla1 wla2 ga2"
     "ga3 wla3 wla4 ga4"
     "ga3 keyboard keyboard ga4"
+}
+
+#middle-main{
+  grid-area: mm;
+  align-self: flex-start;
+  justify-self: center;
 }
 
 #grid1, #word-list-area1{
