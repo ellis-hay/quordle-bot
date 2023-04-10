@@ -33,9 +33,12 @@ export default {
     let self = this; 
     window.addEventListener('keydown', function(event) {
       if (event.repeat) return;
-      self.addTypedLetter(event); // declared in your component methods
+      self.addTypedLetter(event);
     });
-}
+    this.$store.subscribe((mutation, state) => {
+    localStorage.setItem('store', JSON.stringify(state));
+    });
+  }
 }
 </script>
 

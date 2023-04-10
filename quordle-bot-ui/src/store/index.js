@@ -43,6 +43,17 @@ export default new Vuex.Store({
     },
     RESET_CURRENT_LETTERS(state){
       state.currentGuessLetters = [];
+    },
+    GET_LOCAL_STORAGE_INFO(state) {
+      if (localStorage.getItem('store')) {
+        try {
+          this.replaceState(
+            Object.assign(state, JSON.parse(localStorage.getItem('store')))
+          );
+        } catch(e) {
+          localStorage.removeItem('store');
+        }
+      }
     }
   },
   actions: {
