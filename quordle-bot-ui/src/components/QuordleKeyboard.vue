@@ -50,7 +50,7 @@ export default {
       }
     },
     backspace(){
-        this.$store.commit("REMOVE_LETTER");
+      this.$store.commit("REMOVE_LETTER");
     }
   }
 };

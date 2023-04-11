@@ -24,8 +24,15 @@ export default {
     addTypedLetter(event) {
       if (this.$store.state.currentGuessLetters.length < 5  && event.which > 64 && event.which < 91){ //65=A 90=Z
         this.$store.commit('ADD_LETTER', event.key.toUpperCase());
-      } if (event.which == 8) { //Backspace
+      } else if (event.which == 8) { //Backspace
         this.$store.commit('REMOVE_LETTER');
+      } else if (event.which == 13) { //Enter
+        event.stopPropagation();
+        event.preventDefault();
+        if (this.$store.state.guessable.includes(this.$store.state.currentGuessLetters.join(''))) {
+          this.$store.commit('ENTER_WORD');
+          this.$store.commit('RESET_CURRENT_LETTERS')
+        }
       }
     }
   },
