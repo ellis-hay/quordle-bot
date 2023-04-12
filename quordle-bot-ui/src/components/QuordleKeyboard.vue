@@ -31,7 +31,7 @@
             <button class="key" @click="addLetter($event)">V</button>
             <button class="key" @click="addLetter($event)">B</button>
             <button class="key" @click="addLetter($event)">N</button>
-            <button class="key key-special">↵</button>
+            <button class="key key-special" @click="enter">↵</button>
         </div>
     </div>
 </template>
@@ -51,6 +51,12 @@ export default {
     },
     backspace(){
       this.$store.commit("REMOVE_LETTER");
+    },
+    enter(){
+      if (this.$store.state.guessable.includes(this.$store.state.currentGuessLetters.join(''))) {
+        this.$store.commit('ENTER_WORD');
+        this.$store.commit('RESET_CURRENT_LETTERS')
+      }
     }
   }
 };
