@@ -5,7 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1169dc6-bedf-4bbe-aa95-ded38f50b981" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/Wordlists/quordle_guessable.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/node_modules/.cache/eslint/55eea908.json" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/node_modules/.cache/eslint/55eea908.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/quordlebot/controllers/QuordleSolverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quordlebot/controllers/QuordleSolverController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/QuordleBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/QuordleBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/WordDiagramMapMultithreader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/WordDiagramMapMultithreader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/WordListReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/WordListReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/controllers/QuordleSolverController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/controllers/QuordleSolverController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/GameLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/GameLog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/GuessOptimizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/GuessOptimizer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/PossibleWordsLeft.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/PossibleWordsLeft.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/QuordleBot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/QuordleBot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/QuordleRoundOutcome.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/QuordleRoundOutcome.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/RandomQuordleGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/RandomQuordleGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/WordDiagramMapMultithreader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/WordDiagramMapMultithreader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/WordListReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/WordListReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/varArgQuordleBot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/varArgQuordleBot.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,22 +52,25 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="2Kpovf6zR9N0P8EAMP7GjVHoBkW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/quordlebot/logic" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Student\GitRepos\QuordleSolverAndGame\quordle-bot\src\main\java\com\quordlebot\logic" />
@@ -99,6 +121,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Temp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.quordlebot.logic.Temp" />
+      <module name="quordle-bot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.quordlebot.logic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PossibleWordsLeftTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="quordle-bot" />
       <extension name="coverage">
@@ -114,29 +149,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PossibleWordsLeftTest.toStringPWLReturnsLongArraysCorrectly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="quordle-bot" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.quordlebot.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.quordlebot" />
-      <option name="MAIN_CLASS_NAME" value="com.quordlebot.PossibleWordsLeftTest" />
-      <option name="METHOD_NAME" value="toStringPWLReturnsLongArraysCorrectly" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Application" />
         <item itemvalue="Application.QuordleBot (1)" />
+        <item itemvalue="Application.Temp" />
         <item itemvalue="Application.QuordleBot" />
         <item itemvalue="JUnit.PossibleWordsLeftTest" />
-        <item itemvalue="JUnit.PossibleWordsLeftTest.toStringPWLReturnsLongArraysCorrectly" />
       </list>
     </recent_temporary>
   </component>
@@ -151,6 +170,17 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -158,6 +188,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/quordlebot/GuessAnswerDiagramFileMaker.java</url>
           <line>10</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/quordlebot/logic/GuessOptimizer.java</url>
+          <line>122</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

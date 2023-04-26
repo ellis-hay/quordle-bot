@@ -20,7 +20,6 @@ public class WordDiagramMapMultithreader implements Runnable{
 
     @Override
     public void run() {
-        long start = System.currentTimeMillis();
         for (int i = wordArrayStart; i < wordArrayEnd; i++) {
             Map<String, Integer> stringDiagramMap = new HashMap<>();
             for (String possibleAnswer : wordArray) {
@@ -29,7 +28,6 @@ public class WordDiagramMapMultithreader implements Runnable{
                 stringDiagramMap.put(possibleAnswer, base3representation);
             }
             wordToWordDiagrams.put(wordArray[i], stringDiagramMap);
-            wordToWordDiagrams.size();
         }
     }
 

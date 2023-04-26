@@ -3,10 +3,9 @@ package com.quordlebot.logic;
 import java.util.Arrays;
 
 public class QuordleBot {
-    static WordListReader wordListReader = new WordListReader();
-    public static String[] wordArray = wordListReader.wordListExtractor();
+    public static String[] wordArray = WordListReader.answerWordListExtractor();
     static final char[] CORRECT_PATTERN = new char[] {'$', '$', '$', '$', '$'};
-    static final int DEFAULT = 15;
+    static final int MAX_GUESS_DEFAULT = 15;
 
     public static void main(String[] args) {
         GameLog guesses = quordleBot("start", new String[]{"begin", "wordy", "event", "gamer"});
@@ -18,21 +17,19 @@ public class QuordleBot {
         String[] answers = givenAnswers;
         String[][] wordPossibilities = new String[][] {wordArray, wordArray, wordArray, wordArray};
         int unknownAnswers = 4;
-        int[] guessesNeeded = new int[] {DEFAULT, DEFAULT, DEFAULT, DEFAULT};
+        int[] guessesNeeded = new int[] {MAX_GUESS_DEFAULT, MAX_GUESS_DEFAULT, MAX_GUESS_DEFAULT, MAX_GUESS_DEFAULT};
         String[] guessLog = new String[9];
         PossibleWordsLeft[] possibleWordsByRound = new PossibleWordsLeft[9];
         for (int guessNum = 1; guessNum <= 9; guessNum++) {
-            //System.out.println(guess);
             guessLog[guessNum - 1] = guess;
             char[][] quordleDiagrams = QuordleRoundOutcome.quordleVisual(guess, answers);
             for (int i = 0; i < 4; i++) {
                 if (Arrays.equals(quordleDiagrams[i], CORRECT_PATTERN)){
-                    //System.out.println("Word " + (i+1) + " ("+ answers[i] +") guessed in " + guessNum + " tries.");
                     guessesNeeded[i] = guessNum;
                     unknownAnswers -= 1;
                     wordPossibilities[i] = new String[0];
                 }
-                if (guessesNeeded[i] == DEFAULT) {
+                if (guessesNeeded[i] == MAX_GUESS_DEFAULT) {
                     wordPossibilities[i] = GuessOptimizer.possibleAnswerFinder(guess, wordPossibilities[i],
                             quordleDiagrams[i]).toArray(new String[0]);
                 }
