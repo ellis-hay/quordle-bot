@@ -12,6 +12,10 @@ public class PossibleWordsLeft implements Serializable {
         this.wordsLeft = wordsLeft;
     }
 
+    public String[][] getWordsLeft() {
+        return wordsLeft;
+    }
+
     @Override
     public String toString() {
         int stringBuilderCapacity = STRING_OPEN.length() + (wordsLeft[0].length + wordsLeft[1].length

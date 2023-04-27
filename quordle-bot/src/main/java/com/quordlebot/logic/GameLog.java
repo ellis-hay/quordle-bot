@@ -67,6 +67,17 @@ public class GameLog implements Serializable {
         return totalGuesses;
     }
 
+    public List<String[][]> getRoundPossibilities() {
+        List<String[][]> roundPossibilities = new ArrayList<>(9);
+        for (int i = 0; i < 9; i++) {
+            if (possibilitiesByRound[i] == null){
+                break;
+            }
+            roundPossibilities.add(possibilitiesByRound[i].getWordsLeft());
+        }
+        return roundPossibilities;
+    }
+
     public String getPossibleWordsStringByRound(int roundNumber) {
         if (possibilitiesByRound[roundNumber] != null) {
             return possibilitiesByRound[roundNumber].toString();
