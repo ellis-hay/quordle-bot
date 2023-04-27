@@ -54,7 +54,7 @@ public class varArgQuordleBot {
             if (unknownAnswers == 0) {
                 break;
             }
-            possibleWordsByRound[guessNum - 1] = new PossibleWordsLeft(wordPossibilities);
+            possibleWordsByRound[guessNum - 1] = new PossibleWordsLeft(wordPossibilities.clone());
             if (guessLog[guessNum] == null) {  //guessNum is offset by 1 from list index count
                 guess = GuessOptimizer.nextGuessFinder(wordPossibilities, unknownAnswers);
             } else {

@@ -37,7 +37,7 @@ public class QuordleBot {
             if (unknownAnswers == 0) {
                 break;
             }
-            possibleWordsByRound[guessNum - 1] = new PossibleWordsLeft(wordPossibilities);
+            possibleWordsByRound[guessNum - 1] = new PossibleWordsLeft(wordPossibilities.clone());
             guess = GuessOptimizer.nextGuessFinder(wordPossibilities, unknownAnswers);
         }
         return new GameLog(givenGuess, answers, guessLog, guessesNeeded, possibleWordsByRound);

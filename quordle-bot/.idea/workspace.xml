@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1169dc6-bedf-4bbe-aa95-ded38f50b981" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/Wordlists/quordle_guessable.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/node_modules/.cache/eslint/55eea908.json" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/node_modules/.cache/eslint/55eea908.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quordlebot/controllers/QuordleSolverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quordlebot/controllers/QuordleSolverController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/QuordleBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/QuordleBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/WordDiagramMapMultithreader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/WordDiagramMapMultithreader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/WordListReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/WordListReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/controllers/QuordleSolverController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/controllers/QuordleSolverController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/GameLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/GameLog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/GuessOptimizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/GuessOptimizer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/PossibleWordsLeft.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/PossibleWordsLeft.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/QuordleBot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/QuordleBot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/QuordleRoundOutcome.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/QuordleRoundOutcome.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/RandomQuordleGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/RandomQuordleGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/WordDiagramMapMultithreader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/WordDiagramMapMultithreader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/WordListReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/WordListReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/varArgQuordleBot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/varArgQuordleBot.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,9 +173,14 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/quordlebot/logic/GuessOptimizer.java</url>
-          <line>122</line>
-          <option name="timeStamp" value="7" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/quordlebot/controllers/QuordleSolverController.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/quordlebot/logic/QuordleBot.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
