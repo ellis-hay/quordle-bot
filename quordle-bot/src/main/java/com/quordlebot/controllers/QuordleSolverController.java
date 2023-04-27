@@ -5,16 +5,14 @@ import com.quordlebot.logic.QuordleBot;
 import com.quordlebot.logic.RandomQuordleGenerator;
 import com.quordlebot.logic.WordListReader;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Arrays;
 
 import static com.quordlebot.logic.QuordleBot.wordArray;
 
+@CrossOrigin
 @RestController
 public class QuordleSolverController {
 

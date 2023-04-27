@@ -45,6 +45,11 @@ export default {
     this.$store.subscribe((mutation, state) => {
     localStorage.setItem('store', JSON.stringify(state));
     });
+  },
+  created() {
+    if (!Object.keys(this.$store.state.currentGameInfo).length) {
+      this.$store.dispatch('logGameInfo');
+    }
   }
 }
 </script>

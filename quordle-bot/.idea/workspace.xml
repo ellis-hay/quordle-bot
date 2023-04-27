@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1169dc6-bedf-4bbe-aa95-ded38f50b981" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/node_modules/.cache/eslint/55eea908.json" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/node_modules/.cache/eslint/55eea908.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/node_modules/.package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/GameLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/GameLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/PossibleWordsLeft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/PossibleWordsLeft.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/quordlebot/controllers/QuordleSolverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quordlebot/controllers/QuordleSolverController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/controllers/QuordleSolverController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/controllers/QuordleSolverController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/GameLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/GameLog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/PossibleWordsLeft.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/PossibleWordsLeft.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/varArgQuordleBot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/logic/varArgQuordleBot.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
