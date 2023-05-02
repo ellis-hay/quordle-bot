@@ -35,6 +35,35 @@ export default new Vuex.Store({
         state.guesses[state.currentGuessIndex] = currentLetters;
       }
       return state.guesses;
+    },
+    letterColors: state => ansNumber => {
+      const guessColors = state.guesses.map((word, i) => {
+        const answerWord = state.currentGameInfo.answers[ansNumber].toUpperCase().split("");
+        if (i < state.currentGuessIndex) {
+          const letterMap = new Map();
+          for (let j = 0; j < 5; j++) {
+            if (word[j] == answerWord[j]) {
+              answerWord[j] = 'G'; //Green Tile
+            } else if (letterMap.has(answerWord[j])) {
+              letterMap.set(answerWord[j],  letterMap.get(answerWord[j]) + 1);
+            } else {
+              letterMap.set(answerWord[j], 1);
+            }
+          } for (let j = 0; j < 5; j++) {
+              if (answerWord[j] == 'G') {
+                continue;
+              }else if (letterMap.has(word[j]) && letterMap.get(word[j]) > 0) {
+                answerWord[j] = 'Y'; //Yellow Tile
+                letterMap.set(word[j], (letterMap.get(word[j]) - 1));
+              } else {
+                answerWord[j] = 'B'; //Blank
+              }
+            }
+            return answerWord;
+          }
+          return ['B', 'B', 'B', 'B', 'B']
+      })
+      return guessColors;
     } 
   },
   mutations: {
@@ -64,12 +93,17 @@ export default new Vuex.Store({
     },
     LOG_GAME_INFO(state, gameInfo){
       state.currentGameInfo = gameInfo;
+    },
+    SET_FIRST_GUESS(state) {
+      state.guesses[0] = state.currentGameInfo.startingWord.toUpperCase().split("");
+      state.currentGuessIndex++;
     }
   },
   actions: {
     async logGameInfo({ commit }) {
       let data = await apiService.randomBoard();
-      commit('LOG_GAME_INFO', data.data)
+      commit('LOG_GAME_INFO', data.data);
+      commit('SET_FIRST_GUESS');
     },
   },
   modules: {

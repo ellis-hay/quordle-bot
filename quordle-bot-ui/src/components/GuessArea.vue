@@ -1,6 +1,6 @@
 <template>
   <div class = "guess-area">
-      <guess-row v-for="(row, i) in $store.getters.updatedGuesses" :key="row.index" :row="row" :rowIndex="i"/>
+      <guess-row v-for="(row, i) in $store.getters.updatedGuesses" :key="row.index" :row="row" :rowIndex="i" :letterColors="guessColors[i]"/>
   </div>
 </template>
 
@@ -11,6 +11,11 @@ export default {
     props: ["word-number"],
     components: {
         GuessRow
+    },
+    computed: {
+        guessColors() {
+            return this.$store.getters.letterColors(this.wordNumber - 1)
+        }
     }
 }
 </script>

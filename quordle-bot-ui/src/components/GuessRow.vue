@@ -7,7 +7,7 @@
 <script>
 export default {
     name: 'guess-row',
-    props: ['row', 'rowIndex']
+    props: ['row', 'rowIndex', 'letterColors']
 }
 </script>
 
