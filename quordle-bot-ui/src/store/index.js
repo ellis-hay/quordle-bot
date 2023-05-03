@@ -72,18 +72,21 @@ export default new Vuex.Store({
         getters.letterColors(i).some((word, wordNumber) => {
           if (wordNumber === state.currentGuessIndex) {
             return true;
-          } 
+          }
           word.some((colorIndicator, letterNumber) => {
             const letter = state.guesses[wordNumber][letterNumber];
             if (colorIndicator === 'G') {
-              qwertyColors.get(letter)[i] = 'GREEN';
-            } else if (colorIndicator === 'Y' && qwertyColors.get(letter)[i] !== 'GREEN') {
-              qwertyColors.get(letter)[i] = 'YELLOW';
+              qwertyColors.get(letter)[i] = 'green';
+            } else if (colorIndicator === 'Y' && qwertyColors.get(letter)[i] !== 'green') {
+              qwertyColors.get(letter)[i] = 'yellow';
             } else if (!qwertyColors.get(letter)[i]){
-              qwertyColors.get(letter)[i] = 'NONE';
+              qwertyColors.get(letter)[i] = 'none';
+              // if (i == 3 && qwertyColors.get(letter).every(quadrantClass => quadrantClass == 'none')){
+              //   qwertyColors.set(letter, ["unmatched-letter"])
+              // }
             }
+          })
         })
-      })
       }
       return qwertyColors;
     }
