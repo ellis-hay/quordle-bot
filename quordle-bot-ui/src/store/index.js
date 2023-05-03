@@ -38,33 +38,55 @@ export default new Vuex.Store({
     },
     letterColors: state => ansNumber => {
       const guessColors = state.guesses.map((word, i) => {
-        const answerWord = state.currentGameInfo.answers[ansNumber].toUpperCase().split("");
-        if (i < state.currentGuessIndex) {
-          const letterMap = new Map();
-          for (let j = 0; j < 5; j++) {
-            if (word[j] == answerWord[j]) {
-              answerWord[j] = 'G'; //Green Tile
-            } else if (letterMap.has(answerWord[j])) {
-              letterMap.set(answerWord[j],  letterMap.get(answerWord[j]) + 1);
-            } else {
-              letterMap.set(answerWord[j], 1);
-            }
-          } for (let j = 0; j < 5; j++) {
-              if (answerWord[j] == 'G') {
-                continue;
-              }else if (letterMap.has(word[j]) && letterMap.get(word[j]) > 0) {
-                answerWord[j] = 'Y'; //Yellow Tile
-                letterMap.set(word[j], (letterMap.get(word[j]) - 1));
-              } else {
-                answerWord[j] = 'B'; //Blank
-              }
-            }
-            return answerWord;
-          }
+        if (i >= state.currentGuessIndex) {
           return ['B', 'B', 'B', 'B', 'B']
-      })
+        }
+        const answerWord = state.currentGameInfo.answers[ansNumber].toUpperCase().split("");
+        const letterMap = new Map();
+        for (let j = 0; j < 5; j++) {
+          if (word[j] == answerWord[j]) {
+            answerWord[j] = 'G'; //Green Tile
+          } else if (letterMap.has(answerWord[j])) {
+            letterMap.set(answerWord[j],  letterMap.get(answerWord[j]) + 1);
+          } else {
+            letterMap.set(answerWord[j], 1);
+          }
+        } 
+        for (let j = 0; j < 5; j++) {
+          if (answerWord[j] == 'G') {
+            continue;
+          }else if (letterMap.has(word[j]) && letterMap.get(word[j]) > 0) {
+            answerWord[j] = 'Y'; //Yellow Tile
+            letterMap.set(word[j], (letterMap.get(word[j]) - 1));
+          } else {
+            answerWord[j] = 'B'; //Blank
+          }
+        }
+          return answerWord;
+        })
       return guessColors;
-    } 
+    },
+    keyColors(state, getters) {
+      const qwertyColors = new Map([['Q', ['','','','']], ['W', ['','','','']], ['E', ['','','','']], ['R', ['','','','']], ['T', ['','','','']], ['Y', ['','','','']], ['U', ['','','','']], ['I', ['','','','']], ['O', ['','','','']], ['P', ['','','','']], ['A', ['','','','']], ['S', ['','','','']], ['D', ['','','','']], ['F', ['','','','']], ['G', ['','','','']], ['H', ['','','','']], ['J', ['','','','']], ['K', ['','','','']], ['L', ['','','','']], ['Z', ['','','','']], ['X', ['','','','']], ['C', ['','','','']], ['V', ['','','','']], ['B', ['','','','']], ['N', ['','','','']], ['M', ['','','','']]])
+      for(let i = 0; i < 4; i++) {
+        getters.letterColors(i).some((word, wordNumber) => {
+          if (wordNumber === state.currentGuessIndex) {
+            return true;
+          } 
+          word.some((colorIndicator, letterNumber) => {
+            const letter = state.guesses[wordNumber][letterNumber];
+            if (colorIndicator === 'G') {
+              qwertyColors.get(letter)[i] = 'GREEN';
+            } else if (colorIndicator === 'Y' && qwertyColors.get(letter)[i] !== 'GREEN') {
+              qwertyColors.get(letter)[i] = 'YELLOW';
+            } else if (!qwertyColors.get(letter)[i]){
+              qwertyColors.get(letter)[i] = 'NONE';
+            }
+        })
+      })
+      }
+      return qwertyColors;
+    }
   },
   mutations: {
     ADD_LETTER(state, letter){
