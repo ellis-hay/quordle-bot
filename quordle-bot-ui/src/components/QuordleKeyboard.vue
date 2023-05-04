@@ -31,6 +31,7 @@
             <button class="key" @click="addLetter($event)" :style="{background: quadrantColors.get('V')}">V</button>
             <button class="key" @click="addLetter($event)" :style="{background: quadrantColors.get('B')}">B</button>
             <button class="key" @click="addLetter($event)" :style="{background: quadrantColors.get('N')}">N</button>
+            <button class="key" @click="addLetter($event)" :style="{background: quadrantColors.get('M')}">M</button>
             <button class="key key-special" @click="enter">↵</button>
         </div>
     </div>
@@ -45,9 +46,11 @@ export default {
       this.$store.getters.keyColors.forEach((array, letter) => {
         let cssGradient;
         if (array.every(quadrant => quadrant == "none")){
-          cssGradient = "#887c7c"
+          cssGradient = "#c9c3b6"
         } else {
-          cssGradient = "conic-gradient(from 270deg, "
+          array.push(array[2]);
+          array.splice(2, 1);
+          cssGradient = "conic-gradient(from 270deg, ";
           array.forEach((quadrant, i) => {
             if (quadrant == "green") {
               cssGradient += "green ";
@@ -58,12 +61,12 @@ export default {
             }
             cssGradient += `${(90 * i)}deg ${(90 * i + 90)}deg`;
             if (i < 3) {
-              cssGradient += ', '
+              cssGradient += ', ';
             }
           })
           cssGradient += ")";
         }
-        quadGradientMap.set(letter, cssGradient);
+        quadGradientMap.set(letter, cssGradient)    
       })
       return quadGradientMap;
     }
@@ -80,7 +83,8 @@ export default {
     enter(){
       if (this.$store.state.guessable.includes(this.$store.state.currentGuessLetters.join(''))) {
         this.$store.commit('ENTER_WORD');
-        this.$store.commit('RESET_CURRENT_LETTERS')
+        this.$store.commit('RESET_CURRENT_LETTERS');
+        this.$store.commit('LOG_GUESS_DIAGRAMS');
       }
     }
   }

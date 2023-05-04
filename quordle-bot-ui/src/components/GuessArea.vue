@@ -14,7 +14,7 @@ export default {
     },
     computed: {
         guessColors() {
-            return this.$store.getters.letterColors(this.wordNumber - 1)
+            return this.$store.state.letterColors[this.wordNumber - 1]
         }
     }
 }

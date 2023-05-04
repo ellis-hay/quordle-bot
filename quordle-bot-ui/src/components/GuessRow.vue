@@ -1,6 +1,6 @@
 <template>
   <div class="row" :class="{current: $store.state.currentGuessIndex === rowIndex}">
-      <div class="guess-box" v-for="(letter, i) in row" :key="letter.index" :letter="letter" :class="{'green': letterColors[i] === 'G', 'yellow': letterColors[i] === 'Y'}" >{{letter}}</div>
+      <div class="guess-box" v-for="(letter, i) in row" :key="letter.index" :letter="letter" :class="{'green': letterColors[i] === '$', 'yellow': letterColors[i] === '?'}" >{{letter}}</div>
   </div>
 </template>
 
