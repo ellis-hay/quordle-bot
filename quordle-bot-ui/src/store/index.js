@@ -133,6 +133,13 @@ export default new Vuex.Store({
       commit('SET_FIRST_GUESS');
       commit('LOG_GUESS_DIAGRAMS');
     },
+    guessWord({state, commit}) {
+      if (state.guessable.includes(state.currentGuessLetters.join(''))) {
+        commit('ENTER_WORD');
+        commit('RESET_CURRENT_LETTERS');
+        commit('LOG_GUESS_DIAGRAMS');
+      }
+    }
   },
   modules: {
   }

@@ -81,11 +81,7 @@ export default {
       this.$store.commit("REMOVE_LETTER");
     },
     enter(){
-      if (this.$store.state.guessable.includes(this.$store.state.currentGuessLetters.join(''))) {
-        this.$store.commit('ENTER_WORD');
-        this.$store.commit('RESET_CURRENT_LETTERS');
-        this.$store.commit('LOG_GUESS_DIAGRAMS');
-      }
+      this.$store.dispatch('guessWord');
     }
   }
 };

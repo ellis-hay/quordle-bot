@@ -29,10 +29,7 @@ export default {
       } else if (event.which == 13) { //Enter
         event.stopPropagation();
         event.preventDefault();
-        if (this.$store.state.guessable.includes(this.$store.state.currentGuessLetters.join(''))) {
-          this.$store.commit('ENTER_WORD');
-          this.$store.commit('RESET_CURRENT_LETTERS')
-        }
+        this.$store.dispatch('guessWord');
       }
     }
   },
