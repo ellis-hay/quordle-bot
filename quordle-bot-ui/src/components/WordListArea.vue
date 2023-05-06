@@ -3,11 +3,11 @@
       <p class="words-remaining">{{wordQuantityRemaining}} possibilit{{wordQuantityRemaining !== 1 ? 'ies' :'y'}} remaining:</p>
         <div class = "possibilities-column">
           <div class="possibilities-row" v-for="i in Math.floor(wordQuantityRemaining/2)" :key="i">
-            <p class="word left-word">{{$store.getters.getWordsRemaining[wordNumber - 1][2*(i-1)]}}</p>
-            <p class="word right-word">{{$store.getters.getWordsRemaining[wordNumber - 1][2*(i-1)+1]}}</p>
+            <p class="word left-word" @click="chooseWord($event)">{{$store.getters.getWordsRemaining[wordNumber - 1][2*(i-1)]}}</p>
+            <p class="word right-word" @click="chooseWord($event)">{{$store.getters.getWordsRemaining[wordNumber - 1][2*(i-1)+1]}}</p>
           </div>
           <div class="odd-possibility-row">
-            <p class="word odd-word-out" :class="{'singleton-word': wordQuantityRemaining === 1}" v-if="wordQuantityRemaining % 2 === 1">{{$store.getters.getWordsRemaining[wordNumber - 1][wordQuantityRemaining - 1]}}</p>
+            <p class="word odd-word-out" :class="{'singleton-word': wordQuantityRemaining === 1}" v-if="wordQuantityRemaining % 2 === 1" @click="chooseWord($event)">{{$store.getters.getWordsRemaining[wordNumber - 1][wordQuantityRemaining - 1]}}</p>
           </div>
         </div>
   </div>
@@ -20,6 +20,11 @@ export default {
   computed: {
     wordQuantityRemaining(){
       return this.$store.getters.getWordsRemaining[this.wordNumber - 1].length;
+    }
+  },
+  methods: {
+    chooseWord(event){
+      this.$store.commit('PREVIEW_SELECTED_WORD', event.target.textContent)
     }
   }
 }

@@ -78,6 +78,9 @@ export default new Vuex.Store({
       state.guesses[state.currentGuessIndex] = state.currentGuessLetters;
       state.currentGuessIndex++;
     },
+    PREVIEW_SELECTED_WORD(state, selection) {
+      state.currentGuessLetters = selection.toUpperCase().split('');
+    },
     LOG_GUESS_DIAGRAMS(state) {
       for(let i = 0; i < 4; i++){
         if (state.wordStatus[i] !== "guessing") {
