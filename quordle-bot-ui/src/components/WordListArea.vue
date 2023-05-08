@@ -125,5 +125,9 @@ export default {
 .odd-word-out {
   margin-left: 5%;
 }
+.singleton-word {
+  flex-grow: 1;
+  margin: 0 10% 0 10%;
+}
 
 </style>

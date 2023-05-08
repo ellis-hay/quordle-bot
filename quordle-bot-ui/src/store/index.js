@@ -4,6 +4,30 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+function getGuessCorrectness (guessWord, answerWord){
+  const letterMap = new Map();
+  for (let j = 0; j < 5; j++) {
+    if (guessWord[j] == answerWord[j]) {
+      answerWord[j] = '$'; //Green Tile
+    } else if (letterMap.has(answerWord[j])) {
+      letterMap.set(answerWord[j],  letterMap.get(answerWord[j]) + 1);
+    } else {
+      letterMap.set(answerWord[j], 1);
+    }
+  } 
+  for (let j = 0; j < 5; j++) {
+    if (answerWord[j] == '$') {
+      continue;
+    }else if (letterMap.has(guessWord[j]) && letterMap.get(guessWord[j]) > 0) {
+      answerWord[j] = '?'; //Yellow Tile
+      letterMap.set(guessWord[j], (letterMap.get(guessWord[j]) - 1));
+    } else {
+      answerWord[j] = '_'; //Blank
+    }
+  }
+  return answerWord;
+}
+
 export default new Vuex.Store({
   state: {
     currentGuessIndex: 0,
@@ -88,31 +112,41 @@ export default new Vuex.Store({
         }
         const guessWord = state.guesses[state.currentGuessIndex - 1]
         const answerWord = state.currentGameInfo.answers[i].toUpperCase().split("");
-        const letterMap = new Map();
-        for (let j = 0; j < 5; j++) {
-          if (guessWord[j] == answerWord[j]) {
-            answerWord[j] = '$'; //Green Tile
-          } else if (letterMap.has(answerWord[j])) {
-            letterMap.set(answerWord[j],  letterMap.get(answerWord[j]) + 1);
-          } else {
-            letterMap.set(answerWord[j], 1);
-          }
-        } 
-        for (let j = 0; j < 5; j++) {
-          if (answerWord[j] == '$') {
-            continue;
-          }else if (letterMap.has(guessWord[j]) && letterMap.get(guessWord[j]) > 0) {
-            answerWord[j] = '?'; //Yellow Tile
-            letterMap.set(guessWord[j], (letterMap.get(guessWord[j]) - 1));
-          } else {
-            answerWord[j] = '_'; //Blank
-          }
-        }
-        if (answerWord.every(letterColor => letterColor === '$')) {
+        const diagram = getGuessCorrectness(guessWord, answerWord);
+        if (diagram.every(letterColor => letterColor === '$')) {
           state.wordStatus[i] = state.currentGuessIndex; 
         } 
-        state.letterColors[i][state.currentGuessIndex - 1] = answerWord;
+        state.letterColors[i][state.currentGuessIndex - 1] = diagram;
       }
+    },
+    FIND_REMAINING_POSSIBILITIES(state) {
+      const nextRoundPossibilities = [];
+      const guess = state.guesses[state.currentGuessIndex - 1]
+      for(let i = 0; i < 4; i++) {
+        if (state.wordStatus[i] !== "guessing") {
+          nextRoundPossibilities.push([])
+          continue
+        }
+        const possibilitiesByWord = []
+        let matchingDiagram = state.letterColors[i][state.currentGuessIndex - 1];
+        const lastRoundPossibilities = [...state.possibleWordsByRound[state.currentGuessIndex - 2][i]]
+        lastRoundPossibilities.forEach(possibility => {
+          const diagram = getGuessCorrectness(guess, possibility.toUpperCase().split(""));
+          let j = 0;
+          let diagramsMatch = true;
+          while(j++ < 5){
+            if (diagram[j] !== matchingDiagram[j]){
+              diagramsMatch = false;
+              break;
+            }
+          }
+          if (diagramsMatch) {
+            possibilitiesByWord.push(possibility);
+          }
+        })
+        nextRoundPossibilities.push(possibilitiesByWord)
+      }
+      state.possibleWordsByRound.push(nextRoundPossibilities);
     },
     GET_LOCAL_STORAGE_INFO(state) {
       if (localStorage.getItem('store')) {
@@ -146,6 +180,7 @@ export default new Vuex.Store({
         commit('ENTER_WORD');
         commit('RESET_CURRENT_LETTERS');
         commit('LOG_GUESS_DIAGRAMS');
+        commit('FIND_REMAINING_POSSIBILITIES');
       }
     }
   },
