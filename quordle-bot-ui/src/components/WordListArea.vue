@@ -90,6 +90,36 @@ export default {
   height: 50px;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+}
+
+.possibilities-column::-webkit-scrollbar {
+  width: 8px;
+}
+
+.possibilities-column::-webkit-scrollbar-track {
+  box-shadow: inset 0 1px 10px rgba(194, 194, 194, 0.486);
+  border-radius: 3px;
+}
+
+.possibilities-column::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+}
+
+#word-list-area1 .possibilities-column::-webkit-scrollbar-thumb {
+  background: #ef0607;
+}
+
+#word-list-area2 .possibilities-column::-webkit-scrollbar-thumb {
+  background: #0443e4;
+}
+
+#word-list-area3 .possibilities-column::-webkit-scrollbar-thumb {
+  background: #a4a2a6;
+}
+
+#word-list-area4 .possibilities-column::-webkit-scrollbar-thumb {
+  background: #ecba19;
 }
 
 .odd-word-out {

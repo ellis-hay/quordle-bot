@@ -107,6 +107,7 @@ export default {
     justify-content: center;
     align-items: center;
     border-radius: 2px;
+    cursor: pointer;
 }
 
 .key-special{
