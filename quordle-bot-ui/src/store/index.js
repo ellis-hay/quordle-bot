@@ -134,11 +134,12 @@ export default new Vuex.Store({
           const diagram = getGuessCorrectness(guess, possibility.toUpperCase().split(""));
           let j = 0;
           let diagramsMatch = true;
-          while(j++ < 5){
+          while(j < 5){
             if (diagram[j] !== matchingDiagram[j]){
               diagramsMatch = false;
               break;
             }
+            j++
           }
           if (diagramsMatch) {
             possibilitiesByWord.push(possibility);

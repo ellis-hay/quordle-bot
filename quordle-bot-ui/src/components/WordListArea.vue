@@ -1,5 +1,7 @@
 <template>
-  <div class = "word-list-area" >
+  <div>
+    <h1 class="guesses-needed" v-if="$store.state.wordStatus[wordNumber - 1] !== 'guessing'">{{ $store.state.wordStatus[wordNumber - 1] }}</h1>
+    <div class="word-list-area" v-else>
       <p class="words-remaining">{{wordQuantityRemaining}} possibilit{{wordQuantityRemaining !== 1 ? 'ies' :'y'}} remaining:</p>
         <div class = "possibilities-column">
           <div class="possibilities-row" v-for="i in Math.floor(wordQuantityRemaining/2)" :key="i">
@@ -10,6 +12,7 @@
             <p class="word odd-word-out" :class="{'singleton-word': wordQuantityRemaining === 1}" v-if="wordQuantityRemaining % 2 === 1" @click="chooseWord($event)">{{$store.getters.getWordsRemaining[wordNumber - 1][wordQuantityRemaining - 1]}}</p>
           </div>
         </div>
+      </div>
   </div>
 </template>
 
@@ -125,9 +128,34 @@ export default {
 .odd-word-out {
   margin-left: 5%;
 }
+
 .singleton-word {
   flex-grow: 1;
   margin: 0 10% 0 10%;
+}
+
+.guesses-needed {
+  font-size: 28vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#word-list-area1 .guesses-needed {
+  color: #cc7273;
+}
+
+#word-list-area2 .guesses-needed {
+  color: #8f9cb6;
+}
+
+#word-list-area3 .guesses-needed {
+  color: #9d9a9a;
+}
+
+#word-list-area4 .guesses-needed {
+  color: #ebc995;
 }
 
 </style>
