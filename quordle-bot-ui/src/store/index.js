@@ -75,7 +75,9 @@ export default new Vuex.Store({
           }
           word.some((colorIndicator, letterNumber) => {
             const letter = state.guesses[wordNumber][letterNumber];
-            if (colorIndicator === '$') {
+            if (state.wordStatus[i] !== "guessing") {
+              qwertyColors.get(letter)[i] = 'none';
+            } else if (colorIndicator === '$') {
               qwertyColors.get(letter)[i] = 'green';
             } else if (colorIndicator === '?' && qwertyColors.get(letter)[i] !== 'green') {
               qwertyColors.get(letter)[i] = 'yellow';
