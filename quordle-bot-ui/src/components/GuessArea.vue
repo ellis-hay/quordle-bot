@@ -1,6 +1,6 @@
 <template>
   <div class = "guess-area">
-      <guess-row v-for="(row, i) in $store.getters.updatedGuesses" :key="row.index" :row="row" :rowIndex="i" :letterColors="guessColors[i]"/>
+      <guess-row v-for="(row, i) in $store.getters.updatedGuesses" :key="row.index" :row="row" :rowIndex="i" :letterColors="guessColors[i]" :wordIndex="wordNumber - 1"/>
   </div>
 </template>
 
