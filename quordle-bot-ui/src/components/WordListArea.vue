@@ -39,7 +39,7 @@ export default {
     showGuessesNeeded: function() {
       const answersGuessed = this.$store.getters.answersGuessed;
       if (answersGuessed) {
-        setTimeout(() => this.$store.commit('DO_NOT_SHOW_GUESSES_NEEDED'), 2750)
+        setTimeout(() => this.$store.commit('DO_NOT_SHOW_GUESSES_NEEDED'), 2250)
         return
       }
     }
@@ -183,16 +183,44 @@ export default {
   transition: 1s ;
 }
 
-.v-leave-active {
-  transition: 1s ease-in-out 2s;
-}
-
 .v-enter {
   opacity: 0;
 }
 
+#word-list-area1 .v-leave-active {
+  transition: transform 1s ease-out .25s, opacity .7s ease-in .25s;
+}
+
+#word-list-area2 .v-leave-active {
+  transition: transform 1s ease-out .5s, opacity .65s ease-in .5s;
+}
+
+#word-list-area3 .v-leave-active {
+  transition: transform 1s ease-out .71s, opacity .6s ease-in .71s;
+}
+
+#word-list-area4 .v-leave-active {
+  transition: transform 1s ease-out .9s, opacity .55s ease-in .9s;
+}
+
 .v-leave-to {
-  transform: translate(20px);
+  opacity: 0;
+}
+
+#word-list-area1 .v-leave-to {
+  transform: translate(13vw, 17vh);
+}
+
+#word-list-area2 .v-leave-to {
+  transform: translate(-13vw, 17vh);
+}
+
+#word-list-area3 .v-leave-to {
+  transform: translate(13vw, -17vh);
+}
+
+#word-list-area4 .v-leave-to {
+  transform: translate(-13vw, -17vh);
 }
 
 </style>
