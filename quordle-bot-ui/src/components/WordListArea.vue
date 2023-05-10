@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h1 class="guesses-needed" v-if="$store.state.wordStatus[wordNumber - 1] !== 'guessing'">{{ $store.state.wordStatus[wordNumber - 1] }}</h1>
-    <div class="word-list-area" v-else>
+    <Transition>
+      <h1 class="guesses-needed" v-if="$store.state.wordStatus[wordNumber - 1] !== 'guessing' && $store.state.showGuessesNeeded">{{ $store.state.wordStatus[wordNumber - 1] }}</h1>
+    </Transition>
+    <div class="word-list-area" v-if="$store.state.wordStatus[wordNumber - 1] === 'guessing'">
       <p class="words-remaining">{{wordQuantityRemaining}} possibilit{{wordQuantityRemaining !== 1 ? 'ies' :'y'}} remaining:</p>
         <div class = "possibilities-column">
           <div class="possibilities-row" v-for="i in Math.floor(wordQuantityRemaining/2)" :key="i">
@@ -20,11 +22,29 @@
 export default {
   name: "word-list-area",
   props: ["wordNumber"],
+  data() {
+    return {
+      showGuesses: true
+    }
+  },
   computed: {
     wordQuantityRemaining(){
       return this.$store.getters.getWordsRemaining[this.wordNumber - 1].length;
+    },
+    showGuessesNeeded() {
+      return !this.$store.getters.answersGuessed;
     }
   },
+  watch: {
+    showGuessesNeeded: function() {
+      const answersGuessed = this.$store.getters.answersGuessed;
+      if (answersGuessed) {
+        setTimeout(() => this.$store.commit('DO_NOT_SHOW_GUESSES_NEEDED'), 2750)
+        return
+      }
+    }
+  },
+
   methods: {
     chooseWord(event){
       this.$store.commit('PREVIEW_SELECTED_WORD', event.target.textContent)
@@ -156,6 +176,23 @@ export default {
 
 #word-list-area4 .guesses-needed {
   color: #ebc995;
+}
+
+
+.v-enter-active {
+  transition: 1s ;
+}
+
+.v-leave-active {
+  transition: 1s ease-in-out 2s;
+}
+
+.v-enter {
+  opacity: 0;
+}
+
+.v-leave-to {
+  transform: translate(20px);
 }
 
 </style>

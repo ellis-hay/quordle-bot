@@ -1,10 +1,11 @@
 <template>
-<body>
+<div id="root">
   <middle-main id="middle-main"/>
   <guess-area v-for="n in 4" :key = "'GA' + n" :word-number = "n" :id="'grid' + n"/>
   <word-list-area v-for="n in 4" :key = "'WLA' + n" :word-number = "n" :id="'word-list-area' + n"/>
   <keyboard id="keyboard"/>
-</body>
+  <h2 id="guess-total" v-if="$store.getters.answersGuessed">{{ $store.getters.totalGuesses }}</h2>
+</div>
 </template>
 
 <script>
@@ -56,13 +57,17 @@ html {
     font-family: 'Questrial', sans-serif;
 }
 
-body{
-    background-color: 	#EFE7DA;
-    height: 97vh;
-    width: 98vw;
+body {
+  height: 100vh;
+  background-color: 	#EFE7DA;
+  margin: 0;
+}
+
+#root{
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 265px 265px 1fr;
-    grid-template-rows: 1fr 3.75fr 3.65fr;
+    grid-template-rows: 1fr 3.75fr 3.75fr;
     grid-template-areas:
     "ga1 mm mm ga2"
     "ga1 wla1 wla2 ga2"
@@ -129,6 +134,20 @@ body{
   max-width: 530px;
   display: flex;
   flex-direction: column;
+}
+
+#guess-total {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  font-size: 28vh;
+  top: 7vh;
+  color: transparent;
+  background: conic-gradient(at 50% 49%, #8f9cb6 0deg 90deg, #ebc995 90deg 180deg, #9d9a9a 180deg 270deg, #cc7273 270deg 360deg);
+  background-clip: text;  
 }
 
 </style>
