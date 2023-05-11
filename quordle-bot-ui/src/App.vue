@@ -4,15 +4,22 @@
   <guess-area v-for="n in 4" :key = "'GA' + n" :word-number = "n" :id="'grid' + n"/>
   <word-list-area v-for="n in 4" :key = "'WLA' + n" :word-number = "n" :id="'word-list-area' + n"/>
   <keyboard id="keyboard"/>
-  <h2 id="guess-total" v-if="$store.getters.answersGuessed">{{ $store.getters.totalGuesses }}</h2>
+  <Transition
+    @before-enter="onBeforeEnter"
+    @enter="onEnter"
+    :css="false">
+    <h2 id="guess-total" v-if="$store.getters.answersGuessed">{{ this.numberSlide.toFixed(0) }}</h2>
+  </Transition>
 </div>
 </template>
 
 <script>
+import gsap from 'gsap';
+
 import GuessArea from './components/GuessArea.vue';
 import Keyboard from './components/QuordleKeyboard.vue';
 import MiddleMain from './components/MiddleMain.vue';
-import WordListArea from './components/WordListArea.vue'
+import WordListArea from './components/WordListArea.vue';
 
 export default {
   components: {
@@ -20,6 +27,11 @@ export default {
     Keyboard,
     MiddleMain,
     WordListArea
+  },
+  data() {
+    return {
+      numberSlide: 0
+    }
   },
   methods: {
     addTypedLetter(event) {
@@ -32,7 +44,9 @@ export default {
         event.preventDefault();
         this.$store.dispatch('guessWord');
       }
-    }
+    },
+    onBeforeEnter,
+    onEnter
   },
   mounted() {
     let self = this; 
@@ -49,6 +63,26 @@ export default {
       this.$store.dispatch('logGameInfo');
     }
   }
+}
+
+function onBeforeEnter(el) {
+  gsap.set(el, {
+    scaleX: 0.9,
+    scaleY: 0.9,
+    opacity: 0,
+  });
+}
+
+function onEnter(el, done) {
+  gsap.to(el, {
+    delay: 2.38,
+    duration: 2,
+    scaleX: 1,
+    scaleY: 1,
+    opacity: 1,
+    onComplete: done,
+  })
+  gsap.to(this, { delay: 2.35, duration: 2, numberSlide: this.$store.getters.totalGuesses})
 }
 </script>
 
