@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Transition>
+    <Transition name="guess-number">
       <h1 class="guesses-needed" v-if="$store.state.wordStatus[wordNumber - 1] !== 'guessing' && $store.state.showGuessesNeeded">{{ $store.state.wordStatus[wordNumber - 1] }}</h1>
     </Transition>
     <div class="word-list-area" v-if="$store.state.wordStatus[wordNumber - 1] === 'guessing'">
@@ -179,47 +179,47 @@ export default {
 }
 
 
-.v-enter-active {
+.guess-number-enter-active {
   transition: 1s ;
 }
 
-.v-enter {
+.guess-number-enter {
   opacity: 0;
 }
 
-#word-list-area1 .v-leave-active {
+#word-list-area1 .guess-number-leave-active {
   transition: transform 1s ease-out .25s, opacity .7s ease-in .25s;
 }
 
-#word-list-area2 .v-leave-active {
+#word-list-area2 .guess-number-leave-active {
   transition: transform 1s ease-out .5s, opacity .65s ease-in .5s;
 }
 
-#word-list-area3 .v-leave-active {
+#word-list-area3 .guess-number-leave-active {
   transition: transform 1s ease-out .71s, opacity .6s ease-in .71s;
 }
 
-#word-list-area4 .v-leave-active {
+#word-list-area4 .guess-number-leave-active {
   transition: transform 1s ease-out .9s, opacity .55s ease-in .9s;
 }
 
-.v-leave-to {
+.guess-number-leave-to {
   opacity: 0;
 }
 
-#word-list-area1 .v-leave-to {
+#word-list-area1 .guess-number-leave-to {
   transform: translate(13vw, 17vh);
 }
 
-#word-list-area2 .v-leave-to {
+#word-list-area2 .guess-number-leave-to {
   transform: translate(-13vw, 17vh);
 }
 
-#word-list-area3 .v-leave-to {
+#word-list-area3 .guess-number-leave-to {
   transform: translate(13vw, -17vh);
 }
 
-#word-list-area4 .v-leave-to {
+#word-list-area4 .guess-number-leave-to {
   transform: translate(-13vw, -17vh);
 }
 

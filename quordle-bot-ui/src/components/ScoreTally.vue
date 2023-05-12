@@ -5,14 +5,14 @@
             @before-enter="ysOnBeforeEnter"
             @enter="ysOnEnter"
             :css="false">
-            <h2 id="guess-total" v-if="$store.getters.answersGuessed">{{ this.ysNumberSlide.toFixed(0) }}</h2>
+            <h2 id="guess-total" v-if="$store.getters.answersGuessed">{{ Number(this.ysNumberSlide).toFixed(0) }}</h2>
         </Transition>
         <Transition appear
             name="computerScore"
             @before-enter="csOnBeforeEnter"
             @enter="csOnEnter"
             :css="false">
-            <h2 id="computer-score" v-if="$store.getters.answersGuessed">-{{ this.csNumberSlide.toFixed(0) }}<div>-</div></h2>
+            <h2 id="computer-score" v-if="$store.getters.answersGuessed">-{{ Number(this.csNumberSlide).toFixed(0) }}<div>-</div></h2>
         </Transition>
     </div>
 </template>
