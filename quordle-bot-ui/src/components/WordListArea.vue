@@ -24,7 +24,7 @@ export default {
   props: ["wordNumber"],
   data() {
     return {
-      showGuesses: true
+      
     }
   },
   computed: {

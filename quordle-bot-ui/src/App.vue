@@ -4,34 +4,24 @@
   <guess-area v-for="n in 4" :key = "'GA' + n" :word-number = "n" :id="'grid' + n"/>
   <word-list-area v-for="n in 4" :key = "'WLA' + n" :word-number = "n" :id="'word-list-area' + n"/>
   <keyboard id="keyboard"/>
-  <Transition
-    @before-enter="onBeforeEnter"
-    @enter="onEnter"
-    :css="false">
-    <h2 id="guess-total" v-if="$store.getters.answersGuessed">{{ this.numberSlide.toFixed(0) }}</h2>
-  </Transition>
+  <score-tally/>
 </div>
 </template>
 
 <script>
-import gsap from 'gsap';
-
 import GuessArea from './components/GuessArea.vue';
 import Keyboard from './components/QuordleKeyboard.vue';
 import MiddleMain from './components/MiddleMain.vue';
 import WordListArea from './components/WordListArea.vue';
+import ScoreTally from './components/ScoreTally.vue'
 
 export default {
   components: {
     GuessArea,
     Keyboard,
     MiddleMain,
-    WordListArea
-  },
-  data() {
-    return {
-      numberSlide: 0
-    }
+    WordListArea,
+    ScoreTally
   },
   methods: {
     addTypedLetter(event) {
@@ -44,9 +34,7 @@ export default {
         event.preventDefault();
         this.$store.dispatch('guessWord');
       }
-    },
-    onBeforeEnter,
-    onEnter
+    }
   },
   mounted() {
     let self = this; 
@@ -63,26 +51,6 @@ export default {
       this.$store.dispatch('logGameInfo');
     }
   }
-}
-
-function onBeforeEnter(el) {
-  gsap.set(el, {
-    scaleX: 0.9,
-    scaleY: 0.9,
-    opacity: 0,
-  });
-}
-
-function onEnter(el, done) {
-  gsap.to(el, {
-    delay: 2.38,
-    duration: 2,
-    scaleX: 1,
-    scaleY: 1,
-    opacity: 1,
-    onComplete: done,
-  })
-  gsap.to(this, { delay: 2.35, duration: 2, numberSlide: this.$store.getters.totalGuesses})
 }
 </script>
 
@@ -168,20 +136,6 @@ body {
   max-width: 530px;
   display: flex;
   flex-direction: column;
-}
-
-#guess-total {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: fit-content;
-  font-size: 28vh;
-  top: 7vh;
-  color: transparent;
-  background: conic-gradient(at 50% 49%, #8f9cb6 0deg 90deg, #ebc995 90deg 180deg, #9d9a9a 180deg 270deg, #cc7273 270deg 360deg);
-  background-clip: text;  
 }
 
 </style>

@@ -1,6 +1,6 @@
 <template>
-    <div style="height: 5%">
-        <div v-if="$store.state.wordStatus[wordIndex] === 'guessing' || $store.state.wordStatus[wordIndex] > rowIndex" class="row" :class="{current: $store.state.currentGuessIndex === rowIndex}">
+    <div class="row-container" :class="{current: $store.state.currentGuessIndex === rowIndex && $store.state.wordStatus[wordIndex] === 'guessing'}">
+        <div v-if="$store.state.wordStatus[wordIndex] === 'guessing' || $store.state.wordStatus[wordIndex] > rowIndex" class="row" >
             <div class="guess-box" v-for="(letter, i) in row" :key="letter.index" :class="{'green': letterColors[i] === '$', 'yellow': letterColors[i] === '?'}" >{{letter}}</div>
         </div>
         <div v-else class="row" >
@@ -18,6 +18,15 @@ export default {
 </script>
 
 <style >
+.row-container{
+    height: 5%;
+}
+
+.current{
+    height: 15%;
+    box-sizing: content-box;
+}
+
 .row{
     display: flex;
     flex-direction: row;
@@ -34,10 +43,6 @@ export default {
     align-items: center; 
 }
 
-.current{
-    height: 300%;
-    box-sizing: content-box;
-}
 .guess-box{
     aspect-ratio: 3/1;
 }
