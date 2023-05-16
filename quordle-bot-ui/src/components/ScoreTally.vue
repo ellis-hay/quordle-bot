@@ -193,7 +193,7 @@ function csOnEnter(el, done) {
 #next:hover {
     font-size: 2.75vw;
     border-radius: .2vw;
-    padding: .2vh .2vw;
+    padding: .149vh 0.1663vw;
 }
 
 .desc-text-enter {
