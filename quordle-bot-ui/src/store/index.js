@@ -245,6 +245,12 @@ export default new Vuex.Store({
       getters: {
         totalScore(state) {
           return state.pastScores.reduce((total, score) => total + score, 0);
+        },
+        gamesPlayed(state) {
+          return state.pastScores.length;
+        },
+        averageScore(state, getters) {
+          return Number(Number(getters.totalScore / getters.gamesPlayed).toFixed(2));
         }
       },
       mutations: {
