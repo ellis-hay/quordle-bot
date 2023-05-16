@@ -4,8 +4,13 @@
             name="yourScore"
             @before-enter="ysOnBeforeEnter"
             @enter="ysOnEnter"
+            @leave="resetYsNumberSlide"
             :css="false">
             <h2 id="guess-total" v-if="$store.getters.answersGuessed">{{ Number(this.ysNumberSlide).toFixed(0) }}</h2>
+        </Transition>
+        <Transition appear
+            name="desc-text">
+            <h3 id="you-text" v-if="$store.getters.answersGuessed">YOU</h3>
         </Transition>
         <Transition appear
             name="computerScore"
@@ -13,6 +18,17 @@
             @enter="csOnEnter"
             :css="false">
             <h2 id="computer-score" v-if="$store.getters.answersGuessed">-{{ Number(this.csNumberSlide).toFixed(0) }}<div>-</div></h2>
+        </Transition>
+        <Transition appear
+            name="desc-text">
+            <h3 id="computer-text" v-if="$store.getters.answersGuessed">COMPUTER</h3>
+        </Transition>
+        <Transition appear
+            name="desc-text">
+            <div id="difference-next" v-if="$store.getters.answersGuessed">
+                <h3 id="difference" >DIFFERENCE: {{scoreDifference > 0 ? '+' : ''}}{{ scoreDifference }}</h3>
+                <h3 id="next" @click="$store.dispatch('onNext')">NEXT</h3>
+            </div>
         </Transition>
     </div>
 </template>
@@ -26,11 +42,19 @@ export default {
             csNumberSlide: this.$store.getters.totalGuesses
         }
     },
+    computed: {
+        scoreDifference() {
+            return this.$store.getters.totalGuesses - this.$store.state.currentGameInfo.totalGuesses
+        }
+    },
     methods: {
         ysOnBeforeEnter,
         ysOnEnter,
         csOnBeforeEnter,
-        csOnEnter
+        csOnEnter,
+        resetYsNumberSlide() {
+            this.ysNumberSlide = 0;
+        }
     },
 }
 
@@ -117,6 +141,67 @@ function csOnEnter(el, done) {
 #computer-score div{
     display: contents;
     visibility: hidden;
+}
+
+#you-text {
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 22%;
+    left: 30%;
+    font-size: 6vw;
+}
+
+#computer-text {
+    transform: rotate(90deg);
+    position: absolute;
+    top: 52%;
+    left: 55%;
+    font-size: 2.3vw;
+}
+
+#difference-next {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 66%;
+    display: flex;
+    align-items: center;
+    width: 33vw;
+    justify-content: space-between;
+    background: conic-gradient(#ebc995 0deg 180deg,  #9d9a9a 180deg 360deg);
+    background-clip: text;
+}
+
+#difference {
+    font-size: 3vw;
+    color: transparent;
+}
+
+#next {
+    font-size: 2.65vw;
+    border-radius: .2vw;
+    padding: .2vh .3vw;
+    color: transparent;
+    border-style: solid;
+    border-color: #ebc995;
+    border-width: .15vw;
+    cursor: pointer;
+}
+
+#next:hover {
+    font-size: 2.75vw;
+    border-radius: .2vw;
+    padding: .2vh .2vw;
+}
+
+.desc-text-enter {
+    opacity: 0;
+}
+
+.desc-text-enter-active {
+    transition: 1s 6s;
 }
 
 </style>
