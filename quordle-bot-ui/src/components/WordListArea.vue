@@ -61,11 +61,13 @@ export default {
 
 .words-remaining{
   align-self: center;
+  border-radius: 3px;
+  padding: 2px;
 }
 
 .possibilities-column {
   flex-grow: 1;
-  height: 28vh;
+  height: 30.5vh;
   display: flex;
   flex-direction: column;
   overflow-y: auto;

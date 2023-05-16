@@ -7,6 +7,7 @@
     <list default="true" id="b1169dc6-bedf-4bbe-aa95-ded38f50b981" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/node_modules/.cache/eslint/4428250b.json" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/node_modules/.cache/eslint/4428250b.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/src/components/MiddleMain.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/src/components/MiddleMain.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/src/components/WordListArea.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/src/components/WordListArea.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>

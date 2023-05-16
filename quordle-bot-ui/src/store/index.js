@@ -66,7 +66,10 @@ export default new Vuex.Store({
       return state.guesses;
     },
     getWordsRemaining(state) {
-      return state.possibleWordsByRound[state.currentGuessIndex - 1]
+      if (state.possibleWordsByRound.length){
+        return state.possibleWordsByRound[state.currentGuessIndex - 1]
+      }
+      return [[],[],[],[]];
     },
     keyColors(state) {
       const qwertyColors = new Map([['Q', ['','','','']], ['W', ['','','','']], ['E', ['','','','']], ['R', ['','','','']], ['T', ['','','','']], ['Y', ['','','','']], ['U', ['','','','']], ['I', ['','','','']], ['O', ['','','','']], ['P', ['','','','']], ['A', ['','','','']], ['S', ['','','','']], ['D', ['','','','']], ['F', ['','','','']], ['G', ['','','','']], ['H', ['','','','']], ['J', ['','','','']], ['K', ['','','','']], ['L', ['','','','']], ['Z', ['','','','']], ['X', ['','','','']], ['C', ['','','','']], ['V', ['','','','']], ['B', ['','','','']], ['N', ['','','','']], ['M', ['','','','']]])
