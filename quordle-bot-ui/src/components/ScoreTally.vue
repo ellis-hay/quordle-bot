@@ -1,6 +1,10 @@
 <template>
     <div>
         <Transition appear
+            name="desc-text">
+            <h3 id="computer-guesses" v-if="$store.getters.answersGuessed" @click="showComputerGuesses">See Computer's Guesses</h3>
+        </Transition>
+        <Transition appear
             name="yourScore"
             @before-enter="ysOnBeforeEnter"
             @enter="ysOnEnter"
@@ -54,6 +58,11 @@ export default {
         csOnEnter,
         resetYsNumberSlide() {
             this.ysNumberSlide = 0;
+        },
+        showComputerGuesses() {
+            this.$store.commit('DUMMY_COMPUTER_GUESSES');
+            this.$store.commit('LOG_DUMMY_DIAGRAMS');
+            this.$store.commit('TOGGLE_SHOW_DUMMY');
         }
     },
 }
@@ -157,6 +166,24 @@ function csOnEnter(el, done) {
     top: 52%;
     left: 55%;
     font-size: 2.3vw;
+}
+
+#computer-guesses {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 19%;
+    width: fit-content;
+    justify-content: space-between;
+    background: conic-gradient(#8f9cb6 0deg 180deg,  #cc7273 180deg 360deg);
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 3vh;
+    color: transparent;
+    cursor: pointer;
+    z-index: 1;
 }
 
 #difference-next {

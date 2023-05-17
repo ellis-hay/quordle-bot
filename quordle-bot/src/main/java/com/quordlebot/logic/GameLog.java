@@ -2,7 +2,6 @@ package com.quordlebot.logic;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GameLog implements Serializable {
@@ -40,8 +39,8 @@ public class GameLog implements Serializable {
         return guesses;
     }
 
-    public String getGuessesByWord() {
-        return Arrays.toString(guessesByWord);
+    public int[] getGuessesByWord() {
+        return guessesByWord;
     }
 
     public int getNumberBombedOut() {

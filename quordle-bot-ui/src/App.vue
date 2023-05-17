@@ -1,7 +1,8 @@
 <template>
 <div id="root">
   <middle-main id="middle-main"/>
-  <guess-area v-for="n in 4" :key = "'GA' + n" :word-number = "n" :id="'grid' + n"/>
+  <guess-area v-for="n in zeroOrFour('real')" :key = "'GA' + n" :word-number = "n" :id="'grid' + n"/>
+  <dummy-guess-area v-for="n in zeroOrFour('dummy')" :key = "'GA' + n" :word-number = "n" :id="'grid' + n"/>
   <word-list-area v-for="n in 4" :key = "'WLA' + n" :word-number = "n" :id="'word-list-area' + n"/>
   <keyboard id="keyboard"/>
   <score-tally/>
@@ -13,7 +14,8 @@ import GuessArea from './components/GuessArea.vue';
 import Keyboard from './components/QuordleKeyboard.vue';
 import MiddleMain from './components/MiddleMain.vue';
 import WordListArea from './components/WordListArea.vue';
-import ScoreTally from './components/ScoreTally.vue'
+import ScoreTally from './components/ScoreTally.vue';
+import DummyGuessArea from './components/DummyGuessArea.vue';
 
 export default {
   components: {
@@ -21,7 +23,11 @@ export default {
     Keyboard,
     MiddleMain,
     WordListArea,
-    ScoreTally
+    ScoreTally,
+    DummyGuessArea
+  },
+  computed: {
+    
   },
   methods: {
     addTypedLetter(event) {
@@ -33,6 +39,13 @@ export default {
         event.stopPropagation();
         event.preventDefault();
         this.$store.dispatch('guessWord');
+      }
+    },
+    zeroOrFour(dummyOrReal) {
+      if ((dummyOrReal == "real") != this.$store.state.showDummy) {
+        return 4;
+      } else {
+        return 0;
       }
     }
   },

@@ -1,6 +1,6 @@
 <template>
   <div class = "guess-area">
-      <guess-row v-for="(row, i) in $store.getters.updatedGuesses" :key="row.index" :row="row" :rowIndex="i" :letterColors="guessColors[i]" :wordIndex="wordNumber - 1"/>
+      <guess-row v-for="(row, i) in $store.getters.updatedGuesses" :key="row.index" :row="row" :rowIndex="i" :letterColors="guessColors[i]" :wordStatus="$store.state.wordStatus[wordNumber - 1]" :wordIndex="wordNumber - 1"/>
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .guess-area {
     display: flex;
     flex-direction: column;
