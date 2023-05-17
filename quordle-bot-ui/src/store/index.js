@@ -232,7 +232,7 @@ export default new Vuex.Store({
       }
     },
     TOGGLE_SHOW_DUMMY(state) {
-      state.showDummy = true;
+      state.showDummy = !state.showDummy;
     }
   },
   actions: {

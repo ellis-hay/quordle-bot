@@ -2,7 +2,7 @@
     <div>
         <Transition appear
             name="desc-text">
-            <h3 id="computer-guesses" v-if="$store.getters.answersGuessed" @click="showComputerGuesses">See Computer's Guesses</h3>
+            <h3 id="computer-guesses" v-if="$store.getters.answersGuessed" @click="toggleGuessesShown">{{ this.$store.state.showDummy? "See Your Guesses": "See Computer's Guesses" }}</h3>
         </Transition>
         <Transition appear
             name="yourScore"
@@ -59,9 +59,11 @@ export default {
         resetYsNumberSlide() {
             this.ysNumberSlide = 0;
         },
-        showComputerGuesses() {
-            this.$store.commit('DUMMY_COMPUTER_GUESSES');
-            this.$store.commit('LOG_DUMMY_DIAGRAMS');
+        toggleGuessesShown() {
+            if (!this.$store.state.showDummy){
+                this.$store.commit('DUMMY_COMPUTER_GUESSES');
+                this.$store.commit('LOG_DUMMY_DIAGRAMS');
+            }
             this.$store.commit('TOGGLE_SHOW_DUMMY');
         }
     },
