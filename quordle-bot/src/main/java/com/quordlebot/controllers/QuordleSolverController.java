@@ -1,9 +1,6 @@
 package com.quordlebot.controllers;
 
-import com.quordlebot.logic.GameLog;
-import com.quordlebot.logic.QuordleBot;
-import com.quordlebot.logic.RandomQuordleGenerator;
-import com.quordlebot.logic.WordListReader;
+import com.quordlebot.logic.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -24,7 +21,27 @@ public class QuordleSolverController {
                 RandomQuordleGenerator.selectRandomAnswers());
     }
 
-    @RequestMapping(path = "", method = RequestMethod.GET)
+    @RequestMapping(path = "", method = RequestMethod.GET, params={"guesses", "answers"})
+    public GameLog showMultiGuessGame(@RequestParam String[] guesses, @RequestParam String[] answers) {
+        Arrays.sort(wordArray);
+        Arrays.sort(answerAndGuessableWords);
+        if (answers.length != 4) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There must be 4 answer words in query");
+        }
+        for (String answer : answers) {
+            if (Arrays.binarySearch(wordArray, answer) < 0){
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Every answer word must be in wordlist");
+            }
+        }
+        for (String guess: guesses) {
+            if (Arrays.binarySearch(answerAndGuessableWords, guess) < 0) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "If entered, guesses must be valid");
+            }
+        }
+        return MultiGuessQuordleBot.quordleBot(answers, guesses);
+    }
+
+    @RequestMapping(path = "", method = RequestMethod.GET, params={"guess", "answers"})
     public GameLog showSpecificGame(@RequestParam(defaultValue = "") String guess, @RequestParam String[] answers) {
         GameLog gameLog;
         Arrays.sort(wordArray);

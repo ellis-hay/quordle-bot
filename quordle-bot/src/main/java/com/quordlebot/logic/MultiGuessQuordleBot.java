@@ -4,13 +4,15 @@ import java.util.Arrays;
 
 import static com.quordlebot.logic.QuordleBot.wordArray;
 
-public class varArgQuordleBot {
+public class MultiGuessQuordleBot {
     static final char[] CORRECT_PATTERN = new char[] {'$', '$', '$', '$', '$'};
-    private static final int DEFAULT = 15;
+    private static final int MAX_GUESS_DEFAULT = 15;
 
     public static void main(String[] args) {
-        RandomQuordleGenerator quordleGenerator= new RandomQuordleGenerator();
-        GameLog guesses = quordleBot( quordleGenerator.selectRandomAnswers());
+        RandomQuordleGenerator quordleGenerator = new RandomQuordleGenerator();
+        String guess1 = quordleGenerator.selectRandomGuess();
+        String guess2 = quordleGenerator.selectRandomGuess();
+        GameLog guesses = quordleBot(quordleGenerator.selectRandomAnswers(), guess1, guess2);
         System.out.println(guesses.getGuessLog() +" "+ guesses.getGuessesByWord());
     }
 
@@ -19,34 +21,24 @@ public class varArgQuordleBot {
      * would choose vs. a person's choice
      */
 
-    public static GameLog quordleBot(String[] givenAnswers, String... presetGuessesAfterFirst){
+    public static GameLog quordleBot(String[] givenAnswers, String... presetGuesses){
         String[] answers = givenAnswers;
         String[][] wordPossibilities = new String[][] {wordArray, wordArray, wordArray, wordArray};
         int unknownAnswers = 4;
-        String guess;
-        if (presetGuessesAfterFirst.length > 0) {
-            guess = presetGuessesAfterFirst[0];
-        } else {
-            guess = GuessOptimizer.nextGuessFinder(wordPossibilities, unknownAnswers);; // "trace"
-        }
-        int[] guessesNeeded = new int[] {DEFAULT, DEFAULT, DEFAULT, DEFAULT};
+        String guess = presetGuesses[0];
+        int[] guessesNeeded = new int[] {MAX_GUESS_DEFAULT, MAX_GUESS_DEFAULT, MAX_GUESS_DEFAULT, MAX_GUESS_DEFAULT};
         String[] guessLog = new String[9];
-        for (int i = 0; i < presetGuessesAfterFirst.length; i++){
-            guessLog[i+1] = presetGuessesAfterFirst[i];
-        }
+        System.arraycopy(presetGuesses, 0, guessLog, 0, presetGuesses.length);
         PossibleWordsLeft[] possibleWordsByRound = new PossibleWordsLeft[9];
         for (int guessNum = 1; guessNum <= 9; guessNum++) {
-            //System.out.println(guess);
-            guessLog[guessNum - 1] = guess;
             char[][] quordleDiagrams = QuordleRoundOutcome.quordleVisual(guess, answers);
             for (int i = 0; i < 4; i++) {
                 if (Arrays.equals(quordleDiagrams[i], CORRECT_PATTERN)){
-                    //System.out.println("Word " + (i+1) + " ("+ answers[i] +") guessed in " + guessNum + " tries.");
                     guessesNeeded[i] = guessNum;
                     unknownAnswers -= 1;
                     wordPossibilities[i] = new String[0];
                 }
-                if (guessesNeeded[i] == DEFAULT) {
+                if (guessesNeeded[i] == MAX_GUESS_DEFAULT) {
                     wordPossibilities[i] = GuessOptimizer.possibleAnswerFinder(guess, wordPossibilities[i],
                             quordleDiagrams[i]).toArray(new String[0]);
                 }
@@ -57,6 +49,7 @@ public class varArgQuordleBot {
             possibleWordsByRound[guessNum - 1] = new PossibleWordsLeft(wordPossibilities.clone());
             if (guessLog[guessNum] == null) {  //guessNum is offset by 1 from list index count
                 guess = GuessOptimizer.nextGuessFinder(wordPossibilities, unknownAnswers);
+                guessLog[guessNum] = guess;
             } else {
                 guess = guessLog[guessNum];
             }
