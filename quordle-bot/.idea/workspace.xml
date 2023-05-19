@@ -6,11 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="b1169dc6-bedf-4bbe-aa95-ded38f50b981" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/node_modules/.cache/eslint/4428250b.json" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/node_modules/.cache/eslint/4428250b.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/src/services/apiService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/src/services/apiService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/src/components/DummyGuessArea.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/src/components/DummyGuessArea.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/src/components/GuessArea.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/src/components/GuessArea.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/src/components/GuessRow.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/src/components/GuessRow.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../quordle-bot-ui/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../quordle-bot-ui/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/quordlebot/controllers/QuordleSolverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quordlebot/controllers/QuordleSolverController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/MultiGuessQuordleBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quordlebot/logic/MultiGuessQuordleBot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/quordlebot/controllers/QuordleSolverController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/quordlebot/controllers/QuordleSolverController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

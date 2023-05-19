@@ -1,7 +1,7 @@
 <template>
     <div class="row-container" :class="{current: $store.state.currentGuessIndex === rowIndex && wordStatus === 'guessing'}">
         <div v-if="$store.state.wordStatus[wordIndex] === 'guessing' ||  wordStatus > rowIndex" class="row" >
-            <div class="guess-box" v-for="(letter, i) in row" :key="letter.index" :class="{'green': letterColors[i] === '$', 'yellow': letterColors[i] === '?'}" >{{letter}}</div>
+            <div class="guess-box" v-for="(letter, i) in row" :key="letter.index" :class="{'green': letterColors[i] === '$', 'yellow': letterColors[i] === '?', 'pointer': clickOrNull === 'click'}" @[clickOrNull]="showComputerGuessesFromIndex">{{letter}}</div>
         </div>
         <div v-else class="row" >
             <div class="guess-box" v-for="i in 5" :key="i">&nbsp;</div>
@@ -13,7 +13,19 @@
 <script>
 export default {
     name: 'guess-row',
-    props: ['row', 'rowIndex', 'letterColors', 'wordIndex', 'wordStatus']
+    props: ['row', 'rowIndex', 'letterColors', 'wordIndex', 'wordStatus', 'clickable'],
+    computed: {
+        clickOrNull() {
+            return this.clickable && this.$store.getters.answersGuessed && this.rowIndex !== 0 ? "click" : null;
+        }
+    },
+    methods: {
+        showComputerGuessesFromIndex(){
+            this.$store.commit('DUMMY_GUESSES_FROM_INDEX', this.rowIndex);
+            this.$store.commit('LOG_DUMMY_DIAGRAMS');
+            this.$store.commit('TOGGLE_SHOW_DUMMY');
+        }
+    }
 }
 </script>
 
@@ -73,6 +85,10 @@ export default {
 
 .yellow {
     background-color: yellow !important;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 </style>

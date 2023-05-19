@@ -169,7 +169,8 @@ export default new Vuex.Store({
       if (localStorage.getItem('store')) {
         try {
           this.replaceState(
-            Object.assign(state, JSON.parse(localStorage.getItem('store')))
+            Object.assign(state, JSON.parse(localStorage.getItem('store'))),
+            Object.assign(state, {computerComparisonByHumanRound: new Map(JSON.parse(localStorage.getItem('computerComparisonMap')))})
           );
         } catch(e) {
           localStorage.removeItem('store');
@@ -222,6 +223,14 @@ export default new Vuex.Store({
         state.dummyGameInfo.guesses.push(['','','','',''])
       }
       state.dummyGameInfo.wordStatus = state.currentGameInfo.guessesByWord;
+    },
+    DUMMY_GUESSES_FROM_INDEX(state, index) {
+      const computerComparison = state.computerComparisonByHumanRound.get(index);
+      state.dummyGameInfo.guesses = computerComparison.guessLog.map(guess => guess.toUpperCase().split(""));
+      while (state.dummyGameInfo.guesses.length < 9){
+        state.dummyGameInfo.guesses.push(['','','','',''])
+      }
+      state.dummyGameInfo.wordStatus = computerComparison.guessesByWord;
     },
     LOG_DUMMY_DIAGRAMS(state) {
       state.dummyGameInfo.letterColors = [[['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']],[['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']],[['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']],[['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']]];

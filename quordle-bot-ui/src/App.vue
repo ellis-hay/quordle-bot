@@ -56,7 +56,8 @@ export default {
       self.addTypedLetter(event);
     });
     this.$store.subscribe((mutation, state) => {
-    localStorage.setItem('store', JSON.stringify(state));
+      localStorage.setItem('store', JSON.stringify(state));
+      localStorage.setItem('computerComparisonMap', JSON.stringify(Array.from(this.$store.state.computerComparisonByHumanRound.entries())))
     });
   },
   created() {
