@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static com.quordlebot.logic.QuordleBot.wordArray;
 
@@ -22,7 +23,7 @@ public class QuordleSolverController {
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET, params={"guesses", "answers"})
-    public GameLog showMultiGuessGame(@RequestParam String[] guesses, @RequestParam String[] answers) {
+    public List<String> showMultiGuessGame(@RequestParam String[] guesses, @RequestParam String[] answers) {
         Arrays.sort(wordArray);
         Arrays.sort(answerAndGuessableWords);
         if (answers.length != 4) {
@@ -38,7 +39,7 @@ public class QuordleSolverController {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "If entered, guesses must be valid");
             }
         }
-        return MultiGuessQuordleBot.quordleBot(answers, guesses);
+        return MultiGuessQuordleBot.quordleBot(answers, guesses).getGuessLog();
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET, params={"guess", "answers"})

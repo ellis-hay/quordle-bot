@@ -50,6 +50,7 @@ export default new Vuex.Store({
     wordStatus: ["guessing", "guessing", "guessing", "guessing"],
     possibleWordsByRound: [],
     showGuessesNeeded: true,
+    computerComparisonByHumanRound: new Map(),
     nextGameInfo: {},
     dummyGameInfo: {},
     showDummy: false,
@@ -186,6 +187,9 @@ export default new Vuex.Store({
     DO_NOT_SHOW_GUESSES_NEEDED(state) {
       state.showGuessesNeeded = false;
     },
+    LOG_COMPUTER_COMPARISON_FROM_HUMAN_ROUND(state, comparison) {
+      state.computerComparisonByHumanRound.set(state.currentGuessIndex - 1, comparison);
+    },
     SET_NEXT_GAME(state, gameInfo){
       state.nextGameInfo = gameInfo;
     },
@@ -209,6 +213,7 @@ export default new Vuex.Store({
       state.wordStatus = ["guessing", "guessing", "guessing", "guessing"];
       state.possibleWordsByRound = [];
       state.showGuessesNeeded = true;
+      state.computerComparisonByHumanRound = new Map();
       state.showDummy = false;
     },
     DUMMY_COMPUTER_GUESSES(state) {
@@ -243,13 +248,25 @@ export default new Vuex.Store({
       commit('LOG_GUESS_DIAGRAMS');
       dispatch('loadNextGame');
     },
-    guessWord({state, commit}) {
+    async guessWord({state, commit, dispatch}) {
       if (state.guessable.includes(state.currentGuessLetters.join(''))) {
         commit('ENTER_WORD');
         commit('RESET_CURRENT_LETTERS');
         commit('LOG_GUESS_DIAGRAMS');
         commit('FIND_REMAINING_POSSIBILITIES');
+        dispatch('loadComputerComparison');
       }
+    },
+    async loadComputerComparison({state, commit}) {
+      const guessArray = [];
+      state.guesses.some(guess => {
+        if (guess.some(letter => letter == '')){
+          return true;
+        }
+        guessArray.push(guess.join('').toLowerCase());
+      })
+      let data = await apiService.multiGuessComparator(guessArray, state.currentGameInfo.answers);
+      commit('LOG_COMPUTER_COMPARISON_FROM_HUMAN_ROUND', data.data);
     },
     async loadNextGame({commit}) {
       let data = await apiService.randomBoard();

@@ -47,7 +47,9 @@ public class MultiGuessQuordleBot {
                 break;
             }
             possibleWordsByRound[guessNum - 1] = new PossibleWordsLeft(wordPossibilities.clone());
-            if (guessLog[guessNum] == null) {  //guessNum is offset by 1 from list index count
+            if (guessNum == 9){
+                break;
+            } else if (guessLog[guessNum] == null) {
                 guess = GuessOptimizer.nextGuessFinder(wordPossibilities, unknownAnswers);
                 guessLog[guessNum] = guess;
             } else {

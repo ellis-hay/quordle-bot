@@ -9,4 +9,8 @@ const http = axios.create({
     randomBoard() {
       return http.get('/random');
     },
+
+    multiGuessComparator(guessArray, answerArray) {
+      return http.get('', {params: {guesses:guessArray.join(','), answers:answerArray.join(',')}});
+    }
 }
