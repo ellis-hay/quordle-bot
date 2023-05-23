@@ -49,14 +49,11 @@ export default {
     display: flex;
     height: 100%;
     margin: .1rem;
-    /* width:  calc(16px + 3.5vh); */
     border-radius: 3px;
     justify-content: center;
-    align-items: center; 
-}
-
-.guess-box{
+    align-items: center;
     aspect-ratio: 3/1;
+    max-width: 18.2%;
 }
 
 .current .guess-box{

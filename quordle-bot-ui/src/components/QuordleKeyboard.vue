@@ -101,9 +101,8 @@ export default {
     background-color: #EFE7DA;
     font-family: 'Questrial', sans-serif;
     font-size: calc(16px + 1.5vh);
-    font-weight: 500;
-    height: 100%;
-    aspect-ratio: 1/1;
+    height: 99%;
+    aspect-ratio: 1/1.03;
     justify-content: center;
     align-items: center;
     border-radius: 2px;
@@ -116,6 +115,10 @@ export default {
 
 .key:hover {
   background-color: #ebdfcc;
+}
+
+@media only screen and (max-width: 820px){
+
 }
 
 </style>

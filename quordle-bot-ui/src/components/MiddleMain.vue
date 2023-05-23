@@ -51,4 +51,10 @@ export default {
 .stat-box p {
   margin: 0;
 }
+
+@media only screen and (max-width: 820px){
+  #middle-main h1 {
+    margin-left: 20px;
+  }
+}
 </style>

@@ -225,4 +225,45 @@ export default {
   transform: translate(-13vw, -17vh);
 }
 
+@media only screen and (max-width: 820px){
+  .possibilities-row {
+    flex-wrap: wrap;
+    height: unset;
+  }
+
+  .odd-possibility-row {
+    height: unset;
+  }
+
+  .word{
+    width: 90%;
+    flex-basis: unset;
+    border-radius: 8px;
+    height: 3rem;
+    margin: .5rem 0 .5rem 0;
+    font-size: 1.35rem;
+  }
+
+  .odd-word-out {
+    margin: .5rem 0 .5rem 5%;
+  }
+
+  .possibilities-column::-webkit-scrollbar {
+    width: 0;
+  }
+
+  .singleton-word {
+    flex-grow: 0;
+  }
+
+  .words-remaining{
+  align-self: center;
+  border-radius: 5px;
+  padding: 2px;
+  text-align: center;
+  width: 88%
+}
+  
+}
+
 </style>

@@ -152,5 +152,21 @@ body {
   flex-direction: column;
 }
 
+@media only screen and (max-width: 820px){
+  #root{
+    grid-template-columns: 1fr 150px 150px 1fr;
+    grid-template-rows: 1fr 3.75fr 3.75fr;
+    grid-template-areas:
+    "mm mm mm mm"
+    "ga1 wla1 wla2 ga2"
+    "ga3 wla3 wla4 ga4"
+    "keyboard keyboard keyboard keyboard"
+  }
+
+  #keyboard {
+    justify-self: center;
+  }
+}
+
 </style>
 
