@@ -98,7 +98,7 @@ export default new Vuex.Store({
       return qwertyColors;
     },
     totalGuesses : state =>{
-      return state.wordStatus.reduce((total, guess) => total + guess);
+      return state.wordStatus.reduce((total, guess) => total + (guess !== 'X'? guess : 15), 0);
     },
     answersGuessed(state) {
       return state.wordStatus.every(status => status !== 'guessing');
@@ -120,6 +120,13 @@ export default new Vuex.Store({
     },
     PREVIEW_SELECTED_WORD(state, selection) {
       state.currentGuessLetters = selection.toUpperCase().split('');
+    },
+    ENTER_BOMBED_OUT(state){
+      state.wordStatus.forEach((status, i) => {
+        if (status === 'guessing') {
+          state.wordStatus.splice(i, 1, 'X') 
+        }
+      })
     },
     LOG_GUESS_DIAGRAMS(state) {
       for(let i = 0; i < 4; i++){
@@ -264,6 +271,9 @@ export default new Vuex.Store({
         commit('LOG_GUESS_DIAGRAMS');
         commit('FIND_REMAINING_POSSIBILITIES');
         dispatch('loadComputerComparison');
+      }
+      if (state.currentGuessIndex === 9){
+        commit('ENTER_BOMBED_OUT');
       }
     },
     async loadComputerComparison({state, commit}) {

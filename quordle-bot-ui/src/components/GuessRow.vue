@@ -1,6 +1,6 @@
 <template>
     <div class="row-container" :class="{current: $store.state.currentGuessIndex === rowIndex && wordStatus === 'guessing'}">
-        <div v-if="$store.state.wordStatus[wordIndex] === 'guessing' ||  wordStatus > rowIndex" class="row" >
+        <div v-if="wordStatus === 'guessing' ||  wordStatus > rowIndex || wordStatus === 'X'" class="row" >
             <div class="guess-box" v-for="(letter, i) in row" :key="letter.index" :class="{'green': letterColors[i] === '$', 'yellow': letterColors[i] === '?', 'pointer': clickOrNull === 'click'}" @[clickOrNull]="showComputerGuessesFromIndex">{{letter}}</div>
         </div>
         <div v-else class="row" >
