@@ -83,7 +83,7 @@ body {
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 265px 265px 1fr;
-    grid-template-rows: 1fr 3.75fr 3.75fr;
+    grid-template-rows: 94px minmax(0, 3.75fr) minmax(0, 3.75fr) calc((48px + 12vh + 6px));
     grid-template-areas:
     "ga1 mm mm ga2"
     "ga1 wla1 wla2 ga2"
@@ -152,10 +152,10 @@ body {
   flex-direction: column;
 }
 
-@media only screen and (max-width: 820px){
+@media only screen and (max-width: 912px){
   #root{
     grid-template-columns: 1fr 150px 150px 1fr;
-    grid-template-rows: 1fr 3.75fr 3.75fr;
+    grid-template-rows: 115px minmax(0, 1fr) minmax(0, 1fr) calc((48px + 12vh + 6px));
     grid-template-areas:
     "mm mm mm mm"
     "ga1 wla1 wla2 ga2"

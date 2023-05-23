@@ -157,6 +157,7 @@ export default {
 }
 
 .guesses-needed {
+  height: 100%;
   font-size: 28vh;
   margin: 0;
   display: flex;
@@ -225,7 +226,7 @@ export default {
   transform: translate(-13vw, -17vh);
 }
 
-@media only screen and (max-width: 820px){
+@media only screen and (max-width: 912px){
   .possibilities-row {
     flex-wrap: wrap;
     height: unset;
@@ -262,7 +263,11 @@ export default {
   padding: 2px;
   text-align: center;
   width: 88%
-}
+  }
+
+  .guesses-needed {
+    font-size: 24vh;
+  }
   
 }
 

@@ -117,8 +117,5 @@ export default {
   background-color: #ebdfcc;
 }
 
-@media only screen and (max-width: 820px){
-
-}
 
 </style>

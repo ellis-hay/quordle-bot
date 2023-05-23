@@ -98,7 +98,7 @@ function ysOnEnter(el, done) {
 
 function csOnBeforeEnter(el) {
     gsap.set(el, {
-        backgroundImage: 'conic-gradient(at 50% 49%, #8f9cb6 0deg 90deg, #ebc995 90deg 180deg, #9d9a9a 180deg 270deg, #cc7273 270deg 360deg)',
+        backgroundImage: 'conic-gradient(at 50% 50%, #8f9cb6 0deg 90deg, #ebc995 90deg 180deg, #9d9a9a 180deg 270deg, #cc7273 270deg 360deg)',
         y: -105,
         opacity: 0
     })
@@ -125,13 +125,16 @@ function csOnEnter(el, done) {
     position: absolute;
     left: 0;
     right: 0;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+    height: 28vh;
+    display: flex;
+    align-items: center;
     width: fit-content;
     font-size: 28vh;
-    top: 7vh;
+    top: calc((100vh - (48px + 12vh + 6px + 94px)) / 2 + 94px - 14vh);
+    /* top = (screen height - keyboard and middle-main heights) / 2 + middle-main height - 1/2 font size*/
     color: transparent;
-    background: conic-gradient(at 50% 49%, #8f9cb6 0deg 90deg, #ebc995 90deg 180deg, #9d9a9a 180deg 270deg, #cc7273 270deg 360deg);
+    background: conic-gradient(#8f9cb6 0deg 90deg, #ebc995 90deg 180deg, #9d9a9a 180deg 270deg, #cc7273 270deg 360deg);
     background-clip: text;  
 }
 
@@ -139,11 +142,13 @@ function csOnEnter(el, done) {
     position: absolute;
     left: 0;
     right: 0;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+    height: 28vh;
+    display: flex;
+    align-items: center;
     width: fit-content;
     font-size: 28vh;
-    top: 18vh;
+    top: calc((100vh - (48px + 12vh + 6px + 94px)) / 2 + 94px - 2vh);
     color: transparent;
     background: conic-gradient(at 60% 50%, #ebc995 0deg 180deg,  #9d9a9a 180deg 360deg);
     background-clip: text;
@@ -232,5 +237,21 @@ function csOnEnter(el, done) {
 .desc-text-enter-active {
     transition: 1s 6s;
 }
+
+@media only screen and (max-width: 912px) {
+    #guess-total {
+        height: 24vh;
+        font-size: 24vh;
+        top: calc((100vh - (48px + 12vh + 6px + 115px)) / 2 + 115px - 12vh);
+        /* top = (screen height - keyboard and middle-main heights) / 2 + middle-main height - 1/2 font size*/
+    }
+
+    #computer-score {
+        height: 24vh;
+        font-size: 24vh;
+        top: calc((100vh - (48px + 12vh + 6px + 115px)) / 2 + 115px - 2vh);
+    }
+}
+
 
 </style>
