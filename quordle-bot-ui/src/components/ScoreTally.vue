@@ -161,29 +161,31 @@ function csOnEnter(el, done) {
 
 #you-text {
     transform: rotate(-90deg);
+    transform-origin: bottom left;
     position: absolute;
-    top: 22%;
-    left: 30%;
-    font-size: 6vw;
+    top: calc((100vh - (48px + 12vh + 6px + 94px)) / 2 + 94px - 11vh);
+    left: calc((50vw - 271.31px / 2));
+    font-size: 9vh;
+    margin: 0;
 }
 
 #computer-text {
     transform: rotate(90deg);
+    transform-origin: top left;
     position: absolute;
-    top: 52%;
-    left: 55%;
-    font-size: 2.3vw;
+    top: calc((100vh - (48px + 12vh + 6px + 94px)) / 2 + 94px + 1.7vh);
+    left: calc((50vw + 271.31px / 2) + 45px);
+    font-size: 3.55vh;
+    margin: 0;
 }
 
 #computer-guesses {
     position: absolute;
     left: 0;
     right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    top: 19%;
+    margin: 0 auto;
+    top: calc((100vh - (48px + 12vh + 6px + 94px)) / 2 + 94px - 14vh - 105px);
     width: fit-content;
-    justify-content: space-between;
     background: conic-gradient(#8f9cb6 0deg 180deg,  #cc7273 180deg 360deg);
     -webkit-background-clip: text;
     background-clip: text;
@@ -197,37 +199,46 @@ function csOnEnter(el, done) {
     position: absolute;
     left: 0;
     right: 0;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     top: 66%;
     display: flex;
     align-items: center;
-    width: 33vw;
+    width: calc(53.1vh + 1.5vw);
+    /* approx width of elements + wiggle room */
+    max-width: 528px;
     justify-content: space-between;
     background: conic-gradient(#ebc995 0deg 180deg,  #9d9a9a 180deg 360deg);
     background-clip: text;
 }
 
 #difference {
-    font-size: 3vw;
+    font-size: 4.67vh;
     color: transparent;
+    margin: 0;
+    height: 4.67vh;
+    display: flex;
+    align-items: center;
 }
 
 #next {
-    font-size: 2.65vw;
-    border-radius: .2vw;
-    padding: .2vh .3vw;
+    font-size: 4.1vh;
+    border-radius: 3px;
+    padding: 0.4vh 0.3vw;
     color: transparent;
     border-style: solid;
     border-color: #ebc995;
-    border-width: .15vw;
+    border-width: 2px;
     cursor: pointer;
+    height: 4.1vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(4.1vh * 2.7);
+    /* font-size * ~ width-height ratio) */
 }
 
 #next:hover {
-    font-size: 2.75vw;
-    border-radius: .2vw;
-    padding: .149vh 0.1663vw;
+    font-size: 4.28vh;
 }
 
 .desc-text-enter {
