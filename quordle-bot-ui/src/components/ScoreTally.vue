@@ -287,8 +287,24 @@ function csOnEnter(el, done) {
     }
 
     #next {
-        border-image-source: conic-gradient(#ebc995 0deg 180deg, #9d9a9a 180deg 360deg);
-        border-image-slice: 1;
+        position: relative;
+        background-clip: text;
+        background-image: conic-gradient(#ebc995 0deg 180deg, #9d9a9a 180deg 360deg);
+        border: unset
+    } 
+
+    #next::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 3px;
+        padding: 2px;
+        background: conic-gradient(#ebc995 0deg 180deg, #9d9a9a 180deg 360deg);
+        mask: linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
     }
 }
 
