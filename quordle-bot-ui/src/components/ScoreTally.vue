@@ -21,7 +21,7 @@
             @before-enter="csOnBeforeEnter"
             @enter="csOnEnter"
             :css="false">
-            <h2 id="computer-score" v-if="$store.getters.answersGuessed">-{{ Number(this.csNumberSlide).toFixed(0) }}<div>-</div></h2>
+            <h2 id="computer-score" v-if="$store.getters.answersGuessed"><div id="minus-sign">-</div>{{ Number(this.csNumberSlide).toFixed(0) }}<div id="balancer">-</div></h2>
         </Transition>
         <Transition appear
             name="desc-text">
@@ -91,7 +91,7 @@ function ysOnEnter(el, done) {
   timeLine.to(el, {
     delay: 1,
     duration: .7,
-    y: -105,
+    transform: 'translateY(-10.8vh)',
     backgroundImage: 'conic-gradient(at 50% 100%, #8f9cb6 0deg 90deg, #ebc995 90deg 180deg, #9d9a9a 180deg 270deg, #cc7273 270deg 360deg)', 
   })
 }
@@ -154,19 +154,22 @@ function csOnEnter(el, done) {
     background-clip: text;
 }
 
-#computer-score div{
+#computer-score #balancer{
     display: contents;
     visibility: hidden;
 }
 
 #you-text {
     transform: rotate(-90deg);
-    transform-origin: bottom left;
+    transform-origin: top left;
     position: absolute;
-    top: calc((100vh - (48px + 12vh + 6px + 94px)) / 2 + 94px - 11vh);
-    left: calc((50vw - 271.31px / 2));
+    top: calc((100vh - (48px + 12vh + 6px + 94px)) / 2 + 94px - 1vh);
+    left: calc((50vw - 25.3vh));
     font-size: 9vh;
     margin: 0;
+    display: flex;
+    align-items: flex-start;
+    height: 9vh;
 }
 
 #computer-text {
@@ -174,7 +177,7 @@ function csOnEnter(el, done) {
     transform-origin: top left;
     position: absolute;
     top: calc((100vh - (48px + 12vh + 6px + 94px)) / 2 + 94px + 1.7vh);
-    left: calc((50vw + 271.31px / 2) + 45px);
+    left: calc(50vw + 18.2vh);
     font-size: 3.55vh;
     margin: 0;
 }
@@ -184,7 +187,7 @@ function csOnEnter(el, done) {
     left: 0;
     right: 0;
     margin: 0 auto;
-    top: calc((100vh - (48px + 12vh + 6px + 94px)) / 2 + 94px - 14vh - 105px);
+    top: calc((100vh - (48px + 12vh + 6px + 94px)) / 2 + 94px - 25.5vh);
     width: fit-content;
     background: conic-gradient(#8f9cb6 0deg 180deg,  #cc7273 180deg 360deg);
     -webkit-background-clip: text;
@@ -200,7 +203,7 @@ function csOnEnter(el, done) {
     left: 0;
     right: 0;
     margin: 0 auto;
-    top: 66%;
+    top: 70%;
     display: flex;
     align-items: center;
     width: calc(53.1vh + 1.5vw);
@@ -224,6 +227,7 @@ function csOnEnter(el, done) {
     font-size: 4.1vh;
     border-radius: 3px;
     padding: 0.4vh 0.3vw;
+    margin: 0;
     color: transparent;
     border-style: solid;
     border-color: #ebc995;
@@ -250,6 +254,10 @@ function csOnEnter(el, done) {
 }
 
 @media only screen and (max-width: 912px) {
+    #computer-guesses {
+        max-width: 280px;
+        text-align: center;
+    }
     #guess-total {
         height: 24vh;
         font-size: 24vh;
@@ -261,6 +269,26 @@ function csOnEnter(el, done) {
         height: 24vh;
         font-size: 24vh;
         top: calc((100vh - (48px + 12vh + 6px + 115px)) / 2 + 115px - 2vh);
+    }
+
+    #minus-sign, #you-text, #computer-text {
+        visibility: hidden;
+    }
+
+    #difference-next {
+        max-width: 290px;
+        flex-wrap: wrap;
+        justify-content: center;
+        top: 66.5%
+    }
+
+    #difference {
+        font-size: 2.82vh;
+    }
+
+    #next {
+        border-image-source: conic-gradient(#ebc995 0deg 180deg, #9d9a9a 180deg 360deg);
+        border-image-slice: 1;
     }
 }
 
