@@ -34,6 +34,9 @@
                 <h3 id="next" @click="$store.dispatch('onNext')">NEXT</h3>
             </div>
         </Transition>
+        <Transition name="bomb-out-transition">
+            <h4 id="bombed-out-notif" v-if="$store.getters.bombedOut">*bombed out words are worth 15 points each</h4>
+        </Transition>
     </div>
 </template>
 
@@ -237,12 +240,25 @@ function csOnEnter(el, done) {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc(4.1vh * 2.7);
+    width: 11.1vh;
     /* font-size * ~ width-height ratio) */
 }
 
 #next:hover {
     font-size: 4.28vh;
+}
+
+#bombed-out-notif {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: fit-content;
+    bottom: calc(48px + 12vh + 6px + 1.2vh);
+    color: transparent;
+    background-image: conic-gradient(#F1D7AC 0deg 180deg, #9C9B96 180deg 360deg);
+    background-clip: text;
+    font-size: 24px;
 }
 
 .desc-text-enter {
@@ -251,6 +267,14 @@ function csOnEnter(el, done) {
 
 .desc-text-enter-active {
     transition: 1s 6s;
+}
+
+.bomb-out-transition-enter-active {
+  transition: 2.5s ;
+}
+
+.bomb-out-transition-enter {
+  opacity: 0;
 }
 
 @media only screen and (max-width: 912px) {
@@ -290,7 +314,10 @@ function csOnEnter(el, done) {
         position: relative;
         background-clip: text;
         background-image: conic-gradient(#ebc995 0deg 180deg, #9d9a9a 180deg 360deg);
-        border: unset
+        border: unset;
+        font-size: 3.8vh;
+        height: 3.9vh;
+        width: 10.26vh;
     } 
 
     #next::before {
@@ -305,6 +332,11 @@ function csOnEnter(el, done) {
         -webkit-mask-composite: xor;
         mask-composite: exclude;
         pointer-events: none;
+    }
+
+    #bombed-out-notif {
+        max-width: 290px;
+        text-align: center;
     }
 }
 

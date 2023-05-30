@@ -31,8 +31,6 @@ function getGuessCorrectness (guessWord, answerWord){
 export default new Vuex.Store({
   state: {
     currentGuessIndex: 0,
-    guessedAllWords: false,
-    bombedOut: false,
     currentGuessLetters: [],
     guesses: [
       ['','','','',''],
@@ -63,7 +61,7 @@ export default new Vuex.Store({
       while (currentLetters.length < 5){
         currentLetters.push('');
       }
-      if (!state.guessedAllWords && !state.bombedOut && state.currentGuessIndex < 9){
+      if (state.currentGuessIndex < 9){
         state.guesses[state.currentGuessIndex] = currentLetters;
       }
       return state.guesses;
@@ -96,6 +94,9 @@ export default new Vuex.Store({
         })
       }
       return qwertyColors;
+    },
+    bombedOut(state){
+      return state.wordStatus.some(status => status === 'X');
     },
     totalGuesses : state =>{
       return state.wordStatus.reduce((total, guess) => total + (guess !== 'X'? guess : 15), 0);
@@ -203,8 +204,6 @@ export default new Vuex.Store({
     },
     RESET_BOARD(state) {
       state.currentGuessIndex = 0;
-      state.guessedAllWords = false;
-      state.bombedOut = false;
       state.currentGuessLetters = [];
       state.guesses = [
         ['','','','',''],
