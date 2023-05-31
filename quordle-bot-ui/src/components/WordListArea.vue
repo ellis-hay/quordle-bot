@@ -4,7 +4,7 @@
       <h1 class="guesses-needed" v-if="$store.state.wordStatus[wordNumber - 1] !== 'guessing' && $store.state.showGuessesNeeded">{{ $store.state.wordStatus[wordNumber - 1] }}</h1>
     </Transition>
     <div class="word-list-area" v-if="$store.state.wordStatus[wordNumber - 1] === 'guessing'">
-      <p class="words-remaining">{{wordQuantityRemaining}} possibilit{{wordQuantityRemaining !== 1 ? 'ies' :'y'}} remaining:</p>
+      <p class="words-remaining">{{wordQuantityRemaining}} {{textDisplay}}</p>
         <div class = "possibilities-column">
           <div class="possibilities-row" v-for="i in Math.floor(wordQuantityRemaining/2)" :key="i">
             <p class="word left-word" @click="chooseWord($event)">{{$store.getters.getWordsRemaining[wordNumber - 1][2*(i-1)]}}</p>
@@ -33,6 +33,17 @@ export default {
     },
     showGuessesNeeded() {
       return !this.$store.getters.answersGuessed;
+    },
+    textDisplay() {
+      if (window.innerWidth > 428) {
+        let suffix = 'ies'
+        if (this.wordQuantityRemaining === 1){
+          suffix = 'y'
+        }
+        return "possibilit" + suffix + " remaining:";
+      } else {
+        return "word" + (this.wordQuantityRemaining !== 1 ? 's' : '');
+      }
     }
   },
   watch: {
@@ -268,7 +279,43 @@ export default {
   .guesses-needed {
     font-size: 24vh;
   }
-  
+}
+
+@media only screen and (max-width: 428px){
+  .possibilities-column{
+    height: 28.47vh
+  }
+
+  .words-remaining {
+    font-size: .98rem;
+    margin: .5rem 0;
+    height: 4.03vh;
+  }
+
+  .word {
+    font-size: 1.12rem;
+    height: 2.3rem;
+  }
+
+  .guesses-needed {
+    font-size: 13vh
+  }
+
+  #word-list-area1 .guess-number-leave-to {
+    transform: translate(10vw, 22vh);
+  }
+
+  #word-list-area2 .guess-number-leave-to {
+    transform: translate(-10vw, 22vh);
+  }
+
+  #word-list-area3 .guess-number-leave-to {
+    transform: translate(10vw, -22vh);
+  }
+
+  #word-list-area4 .guess-number-leave-to {
+    transform: translate(-10vw, -22vh);
+  }
 }
 
 </style>

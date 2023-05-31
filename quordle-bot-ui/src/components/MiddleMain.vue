@@ -57,4 +57,14 @@ export default {
     margin-left: 20px;
   }
 }
+
+@media only screen and (max-width: 428px){
+  #middle-main h1 {
+    margin-left: 10px;
+  }
+
+  .stat-box h2 {
+    font-size: 18px;
+  }
+}
 </style>

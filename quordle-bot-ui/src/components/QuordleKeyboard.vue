@@ -117,5 +117,19 @@ export default {
   background-color: #ebdfcc;
 }
 
+@media only screen and (max-width: 428px){
+  .keyboard-row{
+    justify-content: space-between;
+  }
+
+  .key{
+    aspect-ratio: 1/1.2;
+    max-width: 9.45vw;
+  }
+
+  .key-special{
+    max-width: unset;
+  }
+}
 
 </style>

@@ -88,4 +88,14 @@ export default {
     cursor: pointer;
 }
 
+@media only screen and (max-width: 428px){
+    .row-container{
+        height: 5.8%
+    }
+
+    .current{
+        height: 14%
+    }
+}
+
 </style>

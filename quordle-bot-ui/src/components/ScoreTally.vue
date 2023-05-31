@@ -282,6 +282,7 @@ function csOnEnter(el, done) {
         max-width: 280px;
         text-align: center;
     }
+
     #guess-total {
         height: 24vh;
         font-size: 24vh;
@@ -338,6 +339,41 @@ function csOnEnter(el, done) {
         max-width: 290px;
         text-align: center;
     }
+}
+
+@media only screen and (max-width: 428px){
+    #computer-guesses {
+        max-width: 110px;
+        text-align: center;
+        font-size: 1.2rem;
+        top: calc((100vh - (48px + 12vh + 16px + 90px)) / 2 + 90px - 19.5vh);
+    }
+
+    #guess-total {
+        height: 13vh;
+        font-size: 13vh;
+        top: calc((100vh - (48px + 12vh + 16px + 90px)) / 2 + 90px - 6.5vh);
+        /* top = (screen height - keyboard and middle-main heights) / 2 + middle-main height - 1/2 font size*/
+    }
+
+    #computer-score {
+        height: 13vh;
+        font-size: 13vh;
+        top: calc((100vh - (48px + 12vh + 16px + 90px)) / 2 + 90px - 1vh);
+    }
+
+    #difference-next {
+        max-width: 110px;
+        flex-wrap: wrap;
+        justify-content: center;
+        top: 66.5%
+    }
+
+    #difference {
+        font-size: 1rem;
+        text-align: center;
+    }
+
 }
 
 

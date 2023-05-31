@@ -168,5 +168,24 @@ body {
   }
 }
 
+@media only screen and (max-width: 428px){
+  #root{
+    grid-template-columns: 1fr 60px 60px 1fr;
+    grid-template-rows: 90px minmax(0, 1fr) minmax(0, 1fr) calc((48px + 12vh + 16px));
+  }
+
+  #keyboard {
+    margin-bottom: 10px;
+  }
+
+  #grid1, #grid3 {
+    padding: 0 2px 0 4px;
+  }
+
+  #grid2, #grid4 {
+    padding: 0 4px 0 2px;
+  }
+}
+
 </style>
 
