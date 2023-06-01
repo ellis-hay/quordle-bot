@@ -1,8 +1,8 @@
 <template>
 <div id="root">
   <middle-main id="middle-main"/>
-  <guess-area v-for="n in zeroOrFour('real')" :key = "'GA' + n" :word-number = "n" :id="'grid' + n"/>
-  <dummy-guess-area v-for="n in zeroOrFour('dummy')" :key = "'GA' + n" :word-number = "n" :id="'grid' + n"/>
+  <guess-area v-for="n in zeroOrFour('real')" :key = "'GA' + n" :word-number = "n" :id="'grid' + n" :class="{'guessed-area': $store.getters.phoneRowSpaceAdjust(n - 1)}" />
+  <dummy-guess-area v-for="n in zeroOrFour('dummy')" :key = "'GA' + n" :word-number = "n" :id="'grid' + n" :class="{'guessed-area': $store.getters.phoneRowSpaceAdjust(n - 1)}" />
   <word-list-area v-for="n in 4" :key = "'WLA' + n" :word-number = "n" :id="'word-list-area' + n"/>
   <keyboard id="keyboard"/>
   <score-tally/>

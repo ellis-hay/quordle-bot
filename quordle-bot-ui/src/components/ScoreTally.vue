@@ -300,6 +300,13 @@ function csOnEnter(el, done) {
         visibility: hidden;
     }
 
+    #bombed-out-notif {
+        max-width: 290px;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 912px) and (min-width: 429px) {
     #difference-next {
         max-width: 290px;
         flex-wrap: wrap;
@@ -334,11 +341,6 @@ function csOnEnter(el, done) {
         mask-composite: exclude;
         pointer-events: none;
     }
-
-    #bombed-out-notif {
-        max-width: 290px;
-        text-align: center;
-    }
 }
 
 @media only screen and (max-width: 428px){
@@ -346,7 +348,7 @@ function csOnEnter(el, done) {
         max-width: 110px;
         text-align: center;
         font-size: 1.2rem;
-        top: calc((100vh - (48px + 12vh + 16px + 90px)) / 2 + 90px - 19.5vh);
+        top: calc((100vh - (48px + 12vh + 16px + 90px)) / 2 + 90px - 20.5vh);
     }
 
     #guess-total {
@@ -363,17 +365,27 @@ function csOnEnter(el, done) {
     }
 
     #difference-next {
-        max-width: 110px;
-        flex-wrap: wrap;
-        justify-content: center;
-        top: 66.5%
+        top: unset;
+        width: unset;
+        bottom: calc(68px + 12vh);
+        justify-content: space-evenly;
     }
 
     #difference {
-        font-size: 1rem;
-        text-align: center;
+        font-size: 3.5vh;
     }
 
+    #next {
+        font-size: 3.8vh;
+        height: 3.8vh;
+    }
+
+    #bombed-out-notif {
+        color: #d42d30;
+        background: unset;
+        bottom: 48px;
+        font-size: 1.875rem;
+    }
 }
 
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="row-container" :class="{current: $store.state.currentGuessIndex === rowIndex && wordStatus === 'guessing'}">
+    <div class="row-container" :class="{current: $store.state.currentGuessIndex === rowIndex && wordStatus === 'guessing', 'guessed-row':$store.getters.phoneRowSpaceAdjust(wordIndex)}" :style="$store.getters.phoneRowSpaceAdjust(wordIndex) && $store.state.doPhoneAnimation ? {animation: 'marginshrink 1s 5s backwards'} : ''">
         <div v-if="wordStatus === 'guessing' ||  wordStatus > rowIndex || wordStatus === 'X'" class="row" >
             <div class="guess-box" v-for="(letter, i) in row" :key="letter.index" :class="{'green': letterColors[i] === '$', 'yellow': letterColors[i] === '?', 'pointer': clickOrNull === 'click'}" @[clickOrNull]="showComputerGuessesFromIndex">{{letter}}</div>
         </div>
@@ -95,6 +95,24 @@ export default {
 
     .current{
         height: 14%
+    }
+
+    .guessed-area {
+        justify-content: flex-start !important;
+    }
+
+    .guessed-row:first-child {
+        margin-top: calc(((100vh - 154px - 12vh) / 2) * .478 / 10);
+    }
+
+    .guessed-row {
+        margin-top: calc(((100vh - 154px - 12vh) / 2) * .3 / 10);
+    }
+
+    @keyframes marginshrink {
+        from {margin-bottom: calc(((100vh - 154px - 12vh) / 2) * .178 / 10);}
+        to {margin-bottom: 0;
+            margin-top: calc(((100vh - 154px - 12vh) / 2) * .3 / 10);}
     }
 }
 
